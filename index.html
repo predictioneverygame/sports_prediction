@@ -60,6 +60,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .mb-b{background:rgba(0,212,255,.15);color:var(--accent);border:1px solid rgba(0,212,255,.3)}
 .mb-f{background:rgba(16,185,129,.15);color:var(--accent3);border:1px solid rgba(16,185,129,.3)}
 .match-time{font-size:.78rem;color:var(--muted)}
+                  .match-date{font-size:.78rem;color:var(--muted)}
 .match-status-live{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(239,68,68,.2);color:var(--red);border:1px solid rgba(239,68,68,.4)}
 .match-status-fin{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(100,116,139,.15);color:var(--muted);border:1px solid var(--border)}
 .match-status-pre{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.4)}
@@ -372,6 +373,7 @@ function renderMatchCard(m) {
       <div class="match-header">
         <div style="display:flex;align-items:center;gap:8px">
           <span class="match-league-badge ${sportClass}">${sportLabel}</span>
+                      <span class="match-date">📅 ${m.date.slice(5).replace('-','/')}</span>
           <span class="match-time">🕖 ${m.time}</span>
         </div>
         <span class="${statusClass[m.status]}">${statusMap[m.status]}</span>
