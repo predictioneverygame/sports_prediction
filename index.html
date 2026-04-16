@@ -157,29 +157,7 @@ footer a{color:var(--accent);text-decoration:none}
     <div class="stat"><div class="num">每日</div><div class="lbl">更新推薦</div></div>
   </div>
 </div>
-<div class="container">
-  <!-- 籃球 -->
-  <div class="leagues-section">
-    <div class="section-title">🏀 籃球聯賽</div>
-    <div class="league-grid">
-      <div class="league-card" onclick="showLeague('SBL')"><div class="lg-icon">🏀</div><div class="lg-name">SBL</div><div class="lg-sub">超級籃球聯賽</div><span class="badge-b">台灣</span></div>
-      <div class="league-card" onclick="showLeague('TPBL')"><div class="lg-icon">🏀</div><div class="lg-name">TPBL</div><div class="lg-sub">台灣職業籃球</div><span class="badge-b">台灣</span></div>
-      <div class="league-card" onclick="showLeague('PLG')"><div class="lg-icon">🏀</div><div class="lg-name">PLG</div><div class="lg-sub">P. LEAGUE+</div><span class="badge-b">台灣</span></div>
-      <div class="league-card" onclick="showLeague('BCL')"><div class="lg-icon">🌏</div><div class="lg-name">BCL Asia-East</div><div class="lg-sub">亞洲冠軍聯賽</div><span class="badge-b">國際</span></div>
-    </div>
-  </div>
-  <!-- 足球 -->
-  <div class="leagues-section">
-    <div class="section-title">⚽ 足球聯賽</div>
-    <div class="league-grid">
-      <div class="league-card football" onclick="showLeague('五大聯賽')"><div class="lg-icon">🏆</div><div class="lg-name">五大聯賽</div><div class="lg-sub">英西義德法</div><span class="badge-f">歐洲</span></div>
-      <div class="league-card football" onclick="showLeague('德乙')"><div class="lg-icon">🇩🇪</div><div class="lg-name">德乙</div><div class="lg-sub">Bundesliga 2</div><span class="badge-f">德國</span></div>
-      <div class="league-card football" onclick="showLeague('澳甲')"><div class="lg-icon">🇦🇺</div><div class="lg-name">澳甲</div><div class="lg-sub">A-League</div><span class="badge-f">澳洲</span></div>
-      <div class="league-card football" onclick="showLeague('美足')"><div class="lg-icon">🇺🇸</div><div class="lg-name">美足 MLS</div><div class="lg-sub">Major League Soccer</div><span class="badge-f">美國</span></div>
-      <div class="league-card football" onclick="showLeague('荷蘭甲')"><div class="lg-icon">🇳🇱</div><div class="lg-name">荷蘭甲</div><div class="lg-sub">Eredivisie</div><span class="badge-f">荷蘭</span></div>
-    </div>
-  </div>
-  <hr class="divider">
+<hr class="divider">
   <!-- 每日推薦 + 側欄 -->
   <div class="layout">
     <div>
@@ -209,7 +187,29 @@ footer a{color:var(--accent);text-decoration:none}
 </div>
 </div>
 
-<!-- LEAGUE DETAIL PAGE -->
+      <div class="container">
+  <!-- 籃球 -->
+  <div class="leagues-section">
+    <div class="section-title">🏀 籃球聯賽</div>
+    <div class="league-grid">
+      <div class="league-card" onclick="showLeague('SBL')"><div class="lg-icon">🏀</div><div class="lg-name">SBL</div><div class="lg-sub">超級籃球聯賽</div><span class="badge-b">台灣</span></div>
+      <div class="league-card" onclick="showLeague('TPBL')"><div class="lg-icon">🏀</div><div class="lg-name">TPBL</div><div class="lg-sub">台灣職業籃球</div><span class="badge-b">台灣</span></div>
+      <div class="league-card" onclick="showLeague('PLG')"><div class="lg-icon">🏀</div><div class="lg-name">PLG</div><div class="lg-sub">P. LEAGUE+</div><span class="badge-b">台灣</span></div>
+      <div class="league-card" onclick="showLeague('BCL')"><div class="lg-icon">🌏</div><div class="lg-name">BCL Asia-East</div><div class="lg-sub">亞洲冠軍聯賽</div><span class="badge-b">國際</span></div>
+    </div>
+  </div>
+  <!-- 足球 -->
+  <div class="leagues-section">
+    <div class="section-title">⚽ 足球聯賽</div>
+    <div class="league-grid">
+      <div class="league-card football" onclick="showLeague('五大聯賽')"><div class="lg-icon">🏆</div><div class="lg-name">五大聯賽</div><div class="lg-sub">英西義德法</div><span class="badge-f">歐洲</span></div>
+      <div class="league-card football" onclick="showLeague('德乙')"><div class="lg-icon">🇩🇪</div><div class="lg-name">德乙</div><div class="lg-sub">Bundesliga 2</div><span class="badge-f">德國</span></div>
+      <div class="league-card football" onclick="showLeague('澳甲')"><div class="lg-icon">🇦🇺</div><div class="lg-name">澳甲</div><div class="lg-sub">A-League</div><span class="badge-f">澳洲</span></div>
+      <div class="league-card football" onclick="showLeague('美足')"><div class="lg-icon">🇺🇸</div><div class="lg-name">美足 MLS</div><div class="lg-sub">Major League Soccer</div><span class="badge-f">美國</span></div>
+      <div class="league-card football" onclick="showLeague('荷蘭甲')"><div class="lg-icon">🇳🇱</div><div class="lg-name">荷蘭甲</div><div class="lg-sub">Eredivisie</div><span class="badge-f">荷蘭</span></div>
+    </div>
+  </div>
+  -- LEAGUE DETAIL PAGE -->
 <div id="page-league" class="page">
 <div class="container">
   <div class="back-btn" onclick="showPage('home')">← 返回首頁</div>
