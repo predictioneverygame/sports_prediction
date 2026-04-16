@@ -221,11 +221,10 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
   </div>
   </div>
-</div>
 
       <div class="container">
   <!-- 籃球 -->
-  <div class="leagues-section">
+  <div id="section-basketball" class="leagues-section">
     <div class="section-title">🏀 籃球聯賽</div>
     <div class="league-grid">
       <div class="league-card" onclick="showLeague('SBL')"><div class="lg-icon">🏀</div><div class="lg-name">SBL</div><div class="lg-sub">超級籃球聯賽</div><span class="badge-b">台灣</span></div>
@@ -235,7 +234,7 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
   </div>
   <!-- 足球 -->
-  <div class="leagues-section">
+  <div id="section-football" class="leagues-section">
     <div class="section-title">⚽ 足球聯賽</div>
     <div class="league-grid">
       <div class="league-card football" onclick="showLeague('五大聯賽')"><div class="lg-icon">🏆</div><div class="lg-name">五大聯賽</div><div class="lg-sub">英西義德法</div><span class="badge-f">歐洲</span></div>
@@ -245,6 +244,8 @@ footer a{color:var(--accent);text-decoration:none}
       <div class="league-card football" onclick="showLeague('荷蘭甲')"><div class="lg-icon">🇳🇱</div><div class="lg-name">荷蘭甲</div><div class="lg-sub">Eredivisie</div><span class="badge-f">荷蘭</span></div>
     </div>
   </div>
+      </div>
+</div>
 
 <div id="page-league" class="page">
 <div class="container">
@@ -748,8 +749,30 @@ function showLeague(league) {
 // PAGE NAV
 // ════════════════════════════════════════════
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.page').forEach(function (p) {
+    p.classList.remove('active');
+  });
+  var pageEl = document.getElementById('page-' + name);
+  if (pageEl) {
+    pageEl.classList.add('active');
+    window.scrollTo(0, 0);
+    return;
+  }
+  if (name === 'basketball' || name === 'football') {
+    var home = document.getElementById('page-home');
+    home.classList.add('active');
+    var targetId = name === 'basketball' ? 'section-basketball' : 'section-football';
+    var target = document.getElementById(targetId);
+    if (target) {
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } else {
+      window.scrollTo(0, 0);
+    }
+    return;
+  }
+  document.getElementById('page-home').classList.add('active');
   window.scrollTo(0, 0);
 }
 
