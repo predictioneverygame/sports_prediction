@@ -226,6 +226,38 @@ footer a{color:var(--accent);text-decoration:none}
 // ════════════════════════════════════════════
 const MATCHES = [
   {
+    id: 'sbl_0416_yulon_beer',
+    date: '2026-04-16',
+    league: 'SBL',
+    sport: 'basketball',
+    time: '19:00',
+    status: 'final',
+    home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 80 },
+    away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: 78 },
+    quarters: [],
+    prediction: {
+      winner: { label:'盤口預測', value:'台灣啤酒+6.5', result:'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'sbl_0416_bank_keelung',
+    date: '2026-04-16',
+    league: 'SBL',
+    sport: 'basketball',
+    time: '19:00',
+    status: 'final',
+    home: { name: '台灣銀行', short: '台銀', logo: 'taiwanbank', score: 71 },
+    away: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 6w7 },
+    quarters: [],
+    prediction: {
+      winner: { label:'盤口預測', value:'台灣啤酒+6.5', result:'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
     id: 'sbl_0415_keelung_dacin',
     date: '2026-04-15',
     league: 'SBL',
@@ -313,6 +345,7 @@ const TEAM_LOGOS = {
   'beer': 'https://upload.wikimedia.org/wikipedia/zh/a/a9/%E5%8F%B0%E7%81%A3%E5%95%A4%E9%85%92%E7%B1%83%E7%90%83%E9%9A%8A.png',
   'yulon': 'https://upload.wikimedia.org/wikipedia/zh/8/8a/%E8%A3%95%E9%9A%86%E7%B4%8D%E6%99%BA%E6%8D%B7.png',
   'sca' : 'https://upload.wikimedia.org/wikipedia/commons/b/bb/%E5%8D%97%E8%8F%AFlogo.jpg',
+  'taiwanbank' : 'https://upload.wikimedia.org/wikipedia/zh/9/9b/%E8%87%BA%E7%81%A3%E9%8A%80%E8%A1%8C%E7%B1%83%E7%90%83%E9%9A%8A.png'
   'powerplus': 'https://upload.wikimedia.org/wikipedia/zh/4/4a/%E5%BD%B0%E5%8C%96%E7%92%9E%E5%9C%92%E6%9F%8F%E5%8A%9B%E5%8A%9B%E7%B1%83%E7%90%83%E9%9A%8A.png'
 };
 const TEAM_LOGO_FALLBACK = {
