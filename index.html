@@ -230,12 +230,12 @@ const MATCHES = [
     league: 'SBL',
     sport: 'basketball',
     time: '19:00',
-    status: 'preview',
-    home: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: null },
-    away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: null },
+    status: 'final',
+    home: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 81 },
+    away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: 70 },
     quarters: [],
     prediction: {
-      winner: { label:'盤口預測', value:'基隆黑鳶+6.5', result:'pending' },
+      winner: { label:'盤口預測', value:'基隆黑鳶+6.5', result:'miss' },
     },
     mvps: [],
     summary: '看好<strong>基隆黑鳶盤口</strong>，主場優勢明顯，近期狀態穩定，防守端表現出色，值得支持。',
@@ -246,12 +246,12 @@ const MATCHES = [
     league: 'SBL',
     sport: 'basketball',
     time: '21:00',
-    status: 'preview',
-    home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: null },
-    away: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: null },
+    status: 'final',
+    home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 62 },
+    away: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: 69 },
     quarters: [],
     prediction: {
-      winner: { label:'盤口預測', value:'裕隆納智捷-6.5', result:'pending' },
+      winner: { label:'盤口預測', value:'裕隆納智捷-6.5', result:'miss' },
     },
     mvps: [],
     summary: '看好<strong>裕隆納智捷盤口</strong>，整體陣容深度勝出，控衛組織穩健，進攻節奏掌控能力強。',
@@ -285,22 +285,22 @@ const MATCHES = [
              '國王因陣容深度不足，在第二節體力與防守明顯崩盤。' +
              '領航猿豪取BCL Asia-East<strong>2連勝</strong>，順利晉級4強。',
   },
-  // {
-  //   id: 'bcl_0414_pilots_SCA',
-  //   date: '2026-04-16',
-  //   league: 'BCL',
-  //   sport: 'basketball',
-  //   time: '19:00',
-  //   status: 'final', // 'preview' | 'live' | 'final'
-  //   home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: null },
-  //   away: { name: '香港南華', short: '南華', logo: 'sca', score: null },
-  //   quarters: [],
-  //   prediction: {
-  //     winner: { label:'讓分盤', value:'領航猿 -14.5', result:'pending' },
-  //   },
-  //   mvps: [],
-  //   summary: '南華今日沒上Dominic Gilbert，勢必在攻守兩端有重大影響，因此看好領航猿。',
-  // }
+  {
+    id: 'bcl_0414_pilots_SCA',
+    date: '2026-04-16',
+    league: 'BCL',
+    sport: 'basketball',
+    time: '19:00',
+    status: 'preview', // 'preview' | 'live' | 'final'
+    home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: null },
+    away: { name: '香港南華', short: '南華', logo: 'sca', score: null },
+    quarters: [],
+    prediction: {
+      winner: { label:'讓分盤', value:'領航猿 -14.5', result:'pending' },
+    },
+    mvps: [],
+    summary: '南華今日沒上Dominic Gilbert，勢必在攻守兩端有重大影響，因此看好領航猿。',
+  }
 ];
 
 // ════════════════════════════════════════════
@@ -309,7 +309,7 @@ const MATCHES = [
 const TEAM_LOGOS = {
   'pilots': 'https://upload.wikimedia.org/wikipedia/zh/c/c6/%E6%A1%83%E5%9C%92%E7%92%9E%E5%9C%92%E9%A0%98%E8%88%AA%E7%8C%BF.svg',
   'kings': 'https://upload.wikimedia.org/wikipedia/zh/f/ff/%E6%96%B0%E5%8C%97%E5%9C%8B%E7%8E%8B.png',
-  'blackkites': 'null',
+  'blackkites': 'https://storage.googleapis.com/p-xc-m/event/538/squads/392d79c71def115260c6c41d6f5743cb61ee66f1271f4704eb473937f7be7051',
   'beer': 'https://upload.wikimedia.org/wikipedia/zh/a/a9/%E5%8F%B0%E7%81%A3%E5%95%A4%E9%85%92%E7%B1%83%E7%90%83%E9%9A%8A.png',
   'yulon': 'https://upload.wikimedia.org/wikipedia/zh/8/8a/%E8%A3%95%E9%9A%86%E7%B4%8D%E6%99%BA%E6%8D%B7.png',
   'sca' : 'https://zh.wikipedia.org/wiki/File:%E5%8D%97%E8%8F%AFlogo.jpg',
