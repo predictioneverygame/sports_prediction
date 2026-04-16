@@ -76,13 +76,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .score-win{color:var(--accent)}
 .score-lose{color:var(--muted)}
 .score-pre{color:var(--text)}
-.vs-block{text-align:center;padding:0 12px}
-.vs-text{font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:6px}
-.quarter-scores{display:flex;flex-direction:column;gap:4px}
-.q-row{display:flex;gap:6px;align-items:center;font-size:.72rem}
-.q-label{color:var(--muted);width:22px;text-align:right}
-.q-score{background:rgba(255,255,255,.06);border-radius:4px;padding:2px 7px;color:var(--text);font-weight:600;min-width:28px;text-align:center}
-.q-score.qwin{color:var(--accent);background:rgba(0,212,255,.1)}
+.vs-block{text-align:center;padding:0 12px;align-self:center}
+.vs-text{font-size:1rem;font-weight:800;color:var(--muted);letter-spacing:2px}
 /* PREDICTION BOX */
 .prediction-box{margin:0 18px 18px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:14px 16px}
 .pred-title{font-size:.78rem;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
@@ -131,7 +126,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-stat-sep{text-align:center;opacity:.35;color:var(--muted);font-size:.72rem;font-weight:400}
 .pred-stat-legend-ic{font-size:.9rem}
 .pred-stat-col-net{text-align:right}
-.stats-card .pred-stat-rows{display:flex;flex-direction:column;gap:0;margin-bottom:12px;max-height:220px;overflow-y:auto}
+.stats-card .pred-stat-rows{display:flex;flex-direction:column;gap:0;margin-bottom:12px;max-height:340px;overflow-y:auto}
 .pred-stat-row.pred-stat-grid{padding:8px 0;border-bottom:1px solid var(--border)}
 .pred-stat-row:last-of-type{border-bottom:none}
 .pred-stat-row .pred-stat-league{color:var(--text)}
@@ -175,7 +170,7 @@ footer a{color:var(--accent);text-decoration:none}
   <h1>數據驅動 精準預測</h1>
   <p>結合數據分析與多年研究，提供籃球、足球各大聯賽深度解析</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">3</div><div class="lbl">分析文章</div></div>
+    <div class="stat"><div class="num" id="hero-stat-rec-count">0</div><div class="lbl">推薦</div></div>
     <div class="stat"><div class="num">8</div><div class="lbl">涵蓋聯賽</div></div>
     <div class="stat"><div class="num">3+</div><div class="lbl">年分析經驗</div></div>
     <div class="stat"><div class="num">每日</div><div class="lbl">更新推薦</div></div>
@@ -271,9 +266,8 @@ const MATCHES = [
     status: 'preview',
     home: { name: '墨爾本勝利', short: '墨爾本勝利', logo: 'Melbourne_Victory', score: 0 },
     away: { name: '紐卡索噴射機', short: '紐卡索', logo: 'Newcastle_United_Jets', score: 0 },
-    quarters: [],
     prediction: {
-      winner: { label:'盤口預測', value:'全場大3.5', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
     },
     mvps: [],
     summary: '',
@@ -287,9 +281,8 @@ const MATCHES = [
     status: 'preview',
     home: { name: '艾華斯堡', short: '艾華斯堡', logo: 'elversberg', score: 0 },
     away: { name: '卡斯魯厄', short: '卡斯魯厄', logo: 'karlsruhe', score: 0 },
-    quarters: [],
     prediction: {
-      winner: { label:'盤口預測', value:'賽前更新', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
     },
     mvps: [],
     summary: '',
@@ -303,9 +296,8 @@ const MATCHES = [
     status: 'preview',
     home: { name: '威靈頓鳳凰', short: '威靈頓', logo: 'wellington_phoenix', score: 0 },
     away: { name: '西悉尼流浪者', short: '西雪梨', logo: 'western_sydney', score: 0 },
-    quarters: [],
     prediction: {
-      winner: { label:'盤口預測', value:'賽前更新', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
     },
     mvps: [],
     summary: '',
@@ -319,7 +311,6 @@ const MATCHES = [
     status: 'preview',
     home: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 0 },
     away: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 0 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'賽前更新', result: 'pending' },
     },
@@ -335,7 +326,6 @@ const MATCHES = [
     status: 'preview',
     home: { name: '新北國王', short: '國王', logo: 'kings', score: 0 },
     away: { name: '香港南華', short: '南華', logo: 'sca', score: 0 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'賽前更新', result: 'pending' },
     },
@@ -351,7 +341,6 @@ const MATCHES = [
     status: 'preview',
     home: { name: '新北中信特攻', short: '特攻', logo: 'dea', score: 0 },
     away: { name: '台啤永豐雲豹', short: '雲豹', logo: 'leopards', score: 0 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'賽前更新', result: 'pending' },
     },
@@ -367,7 +356,6 @@ const MATCHES = [
     status: 'final',
     home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 80 },
     away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: 78 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'台灣啤酒+6.5', result:'hit' },
     },
@@ -383,7 +371,6 @@ const MATCHES = [
     status: 'final',
     home: { name: '台灣銀行', short: '台銀', logo: 'taiwanbank', score: 71 },
     away: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 67 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'台灣銀行-1.5', result:'hit' },
     },
@@ -399,7 +386,6 @@ const MATCHES = [
     status: 'final',
     home: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 81 },
     away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: 70 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'基隆黑鳶+6.5', result:'miss' },
     },
@@ -415,7 +401,6 @@ const MATCHES = [
     status: 'final',
     home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 62 },
     away: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: 69 },
-    quarters: [],
     prediction: {
       winner: { label:'盤口預測', value:'裕隆納智捷-6.5', result:'miss' },
     },
@@ -431,7 +416,6 @@ const MATCHES = [
     status: 'final', // 'preview' | 'live' | 'final'
     home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 99 },
     away: { name: '香港南華', short: '南華', logo: 'sca', score: 80 },
-    quarters: [],
     prediction: {
       winner: { label:'讓分盤', value:'領航猿 -14.5', result:'hit' },
     },
@@ -447,12 +431,6 @@ const MATCHES = [
     status: 'final', // 'preview' | 'live' | 'final'
     home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 110 },
     away: { name: '新北國王', short: '國王', logo: 'kings', score: 85 },
-    quarters: [
-      { label:'Q1', home:14, away:16 },
-      { label:'Q2', home:38, away:11 },
-      { label:'Q3', home:36, away:33 },
-      { label:'Q4', home:22, away:25 },
-    ],
     prediction: {
       winner: { label:'讓分盤', value:'領航猿 -8.5', result:'hit' }
     },
@@ -514,17 +492,6 @@ function renderMatchCard(m) {
   const sportClass = m.sport === 'basketball' ? 'mb-b' : 'mb-f';
   const sportLabel = m.sport === 'basketball' ? '🏀 ' + m.league : '⚽ ' + m.league;
 
-  const quartersHTML = m.quarters.map(q => {
-    const hw = m.status === 'final' && q.home > q.away;
-    const aw = m.status === 'final' && q.away > q.home;
-    return `<div class="q-row">
-      <span class="q-label">${q.label}</span>
-      <span class="q-score ${hw?'qwin':''}">${m.status!=='preview'?q.home:'—'}</span>
-      <span style="color:var(--muted);font-size:.65rem">:</span>
-      <span class="q-score ${aw?'qwin':''}">${m.status!=='preview'?q.away:'—'}</span>
-    </div>`;
-  }).join('');
-
   const predHTML = Object.values(m.prediction).map(p => `
     <div class="pred-item">
       <div class="pred-label">${p.label}</div>
@@ -563,7 +530,6 @@ function renderMatchCard(m) {
         </div>
         <div class="vs-block">
           <div class="vs-text">VS</div>
-          <div class="quarter-scores">${quartersHTML}</div>
         </div>
         <div class="team-block">
           <div class="team-logo">${getTeamLogo(m.away.logo)}</div>
@@ -598,6 +564,12 @@ const LEAGUE_STATS_LABEL = {
   美足: '⚽ MLS',
   荷蘭甲: '⚽ 荷甲',
 };
+
+/** 預測戰績側欄：固定列出與首頁聯賽區相同之聯賽（無結算則 0） */
+const PRED_STATS_LEAGUE_ORDER = [
+  'SBL', 'TPBL', 'PLG', 'BCL',
+  '五大聯賽', '德乙', '澳甲', '美足', '荷蘭甲',
+];
 
 function tallyPredictionsByLeague(matches) {
   const byLeague = {};
@@ -641,29 +613,21 @@ function renderPredictionStats() {
   const rowsEl = document.getElementById('pred-stats-rows');
   const totalEl = document.getElementById('pred-stats-total');
 
-  const leagues = Object.keys(byLeague)
-    .filter((lg) => byLeague[lg].hit + byLeague[lg].miss > 0)
-    .sort((a, b) => a.localeCompare(b, 'zh-Hant'));
-
-  if (leagues.length === 0) {
-    rowsEl.innerHTML = '<div style="font-size:.78rem;color:var(--muted);padding:8px 0;width:100%">尚無已結算場次</div>';
-  } else {
-    rowsEl.innerHTML = leagues
-      .map((lg) => {
-        const { hit, miss } = byLeague[lg];
-        const label = LEAGUE_STATS_LABEL[lg] || lg;
-        const net = formatNet(hit, miss);
-        const nc = netClass(hit, miss);
-        return `<div class="pred-stat-row pred-stat-grid">
-          <span class="pred-stat-league pred-stat-col-league" title="${lg}">${label}</span>
-          <span class="pred-stat-col-hit ic-hit">${hit}</span>
-          <span class="pred-stat-sep">·</span>
-          <span class="pred-stat-col-miss ic-miss">${miss}</span>
-          <span class="pred-stat-net pred-stat-col-net ${nc}">${net}</span>
-        </div>`;
-      })
-      .join('');
-  }
+  rowsEl.innerHTML = PRED_STATS_LEAGUE_ORDER.map(function (lg) {
+    const rec = byLeague[lg] || { hit: 0, miss: 0 };
+    const hit = rec.hit;
+    const miss = rec.miss;
+    const label = LEAGUE_STATS_LABEL[lg] || lg;
+    const net = formatNet(hit, miss);
+    const nc = netClass(hit, miss);
+    return `<div class="pred-stat-row pred-stat-grid">
+      <span class="pred-stat-league pred-stat-col-league" title="${lg}">${label}</span>
+      <span class="pred-stat-col-hit ic-hit">${hit}</span>
+      <span class="pred-stat-sep">·</span>
+      <span class="pred-stat-col-miss ic-miss">${miss}</span>
+      <span class="pred-stat-net pred-stat-col-net ${nc}">${net}</span>
+    </div>`;
+  }).join('');
 
   const tNet = formatNet(totalHit, totalMiss);
   const tNc = netClass(totalHit, totalMiss);
@@ -776,9 +740,15 @@ function showPage(name) {
   window.scrollTo(0, 0);
 }
 
+function updateHeroRecCount() {
+  var el = document.getElementById('hero-stat-rec-count');
+  if (el) el.textContent = String(MATCHES.length);
+}
+
 // INIT
 renderDateList();
 renderPredictionStats();
+updateHeroRecCount();
 </script>
 </body>
 </html>
