@@ -26,7 +26,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .section-title{font-size:1.25rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .section-title::before{content:'';display:block;width:4px;height:22px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
 .page{display:none}.page.active{display:block}
-/* LEAGUE GRID */
 .leagues-section{margin-bottom:44px}
 .league-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px}
 .league-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .25s;display:block}
@@ -38,9 +37,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .badge-b{display:inline-block;margin-top:7px;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.3);color:var(--accent);font-size:.68rem;padding:2px 10px;border-radius:20px}
 .badge-f{display:inline-block;margin-top:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--accent3);font-size:.68rem;padding:2px 10px;border-radius:20px}
 .divider{border:none;border-top:1px solid var(--border);margin:40px 0}
-/* 首頁主區：與 .container 同寬與左右內距，讓「每日推薦」與下方聯賽區垂直對齊、右欄不貼邊 */
 .home-main{max-width:1200px;margin:0 auto;padding:0 24px 40px;box-sizing:border-box}
-/* DATE ACCORDION */
 .date-list{display:flex;flex-direction:column;gap:12px}
 .date-row{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .date-row.open{border-color:var(--accent)}
@@ -55,18 +52,16 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .date-row.open .chevron{transform:rotate(180deg)}
 .date-body{display:none;padding:0 20px 20px}
 .date-row.open .date-body{display:block}
-/* MATCH CARD - Main prediction card */
 .match-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
 .match-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
 .match-league-badge{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:3px 12px;border-radius:20px}
 .mb-b{background:rgba(0,212,255,.15);color:var(--accent);border:1px solid rgba(0,212,255,.3)}
 .mb-f{background:rgba(16,185,129,.15);color:var(--accent3);border:1px solid rgba(16,185,129,.3)}
 .match-time{font-size:.78rem;color:var(--muted)}
-                  .match-date{font-size:.78rem;color:var(--muted)}
+.match-date{font-size:.78rem;color:var(--muted)}
 .match-status-live{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(239,68,68,.2);color:var(--red);border:1px solid rgba(239,68,68,.4)}
 .match-status-fin{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(100,116,139,.15);color:var(--muted);border:1px solid var(--border)}
 .match-status-pre{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.4)}
-/* SCOREBOARD */
 .scoreboard{display:flex;align-items:center;justify-content:space-around;padding:24px 18px;gap:12px}
 .team-block{text-align:center;flex:1}
 .team-name{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:6px}
@@ -79,7 +74,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .score-pre{color:var(--text)}
 .vs-block{text-align:center;padding:0 12px;align-self:center}
 .vs-text{font-size:1rem;font-weight:800;color:var(--muted);letter-spacing:2px}
-/* PREDICTION BOX */
 .prediction-box{margin:0 18px 18px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:14px 16px}
 .pred-title{font-size:.78rem;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .pred-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px}
@@ -92,17 +86,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-result-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:10px;margin-left:8px}
 .tag-hit{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
 .tag-miss{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
-/* MVP BOX */
 .mvp-row{display:flex;gap:10px;margin:0 18px 18px;flex-wrap:wrap}
 .mvp-card{flex:1;min-width:140px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:center}
 .mvp-icon{font-size:1.4rem}
 .mvp-name{font-size:.88rem;font-weight:700;color:var(--text)}
 .mvp-stat{font-size:.78rem;color:var(--accent);margin-top:2px}
-/* ANALYSIS */
 .analysis-box{margin:0 18px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
 .analysis-box p{font-size:.85rem;color:var(--muted);line-height:1.7}
 .analysis-box p strong{color:var(--text)}
-/* LAYOUT */
 .layout{display:grid;grid-template-columns:1fr 270px;gap:28px}
 .sidebar{display:flex;flex-direction:column;gap:18px}
 .sb-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
@@ -116,18 +107,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .sb-list li a{color:var(--muted);text-decoration:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .sb-list li a:hover{color:var(--accent)}
 .sb-cnt{color:var(--accent);font-size:.76rem}
-/* 預測戰績：標題列與資料列共用欄寬，✓／✗ 對齊下方數字 */
 .pred-stat-grid{display:grid;grid-template-columns:minmax(0,1fr) 34px 12px 34px 42px;align-items:center;column-gap:0;font-size:.8rem}
 .stats-card-head.pred-stat-grid{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .stats-card-head h3{margin:0;padding:0;border-bottom:none;margin-bottom:0}
 .stats-card-head .pred-stat-col-hit,
-.stats-card-head .pred-stat-col-miss{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  line-height:1;
-  transform:translateX(-20px);
-}
+.stats-card-head .pred-stat-col-miss{display:flex;align-items:center;justify-content:center;line-height:1;transform:translateX(-20px)}
 .pred-stat-col-league{min-width:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pred-stat-col-hit,.pred-stat-col-miss{text-align:center;font-weight:800;font-size:.82rem}
 .pred-stat-col-hit.ic-hit,.ic-hit.pred-stat-col-hit{color:var(--green)}
@@ -135,28 +119,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-stat-sep{text-align:center;opacity:.35;color:var(--muted);font-size:.72rem;font-weight:400}
 .pred-stat-legend-ic{font-size:.9rem;position:relative;top:-1px}
 .pred-stat-col-net{text-align:right}
-.stats-card .pred-stat-rows{
-  display:flex;flex-direction:column;gap:0;margin-bottom:12px;max-height:340px;overflow-y:auto;
-  padding-right:10px; /* 預留捲軸空間，避免蓋到文字 */
-  scrollbar-width:thin;
-  scrollbar-color:rgba(143,155,179,.55) transparent;
-  scrollbar-gutter:stable;
-}
+.stats-card .pred-stat-rows{display:flex;flex-direction:column;gap:0;margin-bottom:12px;max-height:340px;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:rgba(143,155,179,.55) transparent;scrollbar-gutter:stable}
 .stats-card .pred-stat-rows::-webkit-scrollbar{width:8px}
-.stats-card .pred-stat-rows::-webkit-scrollbar-track{
-  background:transparent;
-  margin:6px 0;
-}
-.stats-card .pred-stat-rows::-webkit-scrollbar-thumb{
-  background:linear-gradient(180deg,rgba(143,155,179,.75),rgba(143,155,179,.45));
-  border-radius:999px;
-  border:2px solid transparent;
-  background-clip:padding-box;
-}
-.stats-card .pred-stat-rows::-webkit-scrollbar-thumb:hover{
-  background:linear-gradient(180deg,rgba(0,212,255,.85),rgba(124,58,237,.75));
-  background-clip:padding-box;
-}
+.stats-card .pred-stat-rows::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(143,155,179,.75),rgba(143,155,179,.45));border-radius:999px;border:2px solid transparent;background-clip:padding-box}
 .pred-stat-row.pred-stat-grid{padding:8px 0;border-bottom:1px solid var(--border)}
 .pred-stat-row:last-of-type{border-bottom:none}
 .pred-stat-row .pred-stat-league{color:var(--text)}
@@ -166,17 +131,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-stat-net.zero{color:var(--muted)}
 .pred-stat-total.pred-stat-grid{margin-top:4px;padding-top:12px;border-top:1px solid var(--border);font-size:.82rem}
 .pred-stat-total .lbl{font-weight:800;color:var(--accent);letter-spacing:.5px}
-.pred-stat-total .pred-stat-col-hit,
-.pred-stat-total .pred-stat-col-miss,
-.pred-stat-total .pred-stat-col-net{
-  transform:translateX(-20px);
-}
+.pred-stat-total .pred-stat-col-hit,.pred-stat-total .pred-stat-col-miss,.pred-stat-total .pred-stat-col-net{transform:translateX(-20px)}
 .analyst-card{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(0,212,255,.1));border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:18px;text-align:center}
 .analyst-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 10px}
 .analyst-name{font-size:.97rem;font-weight:700;margin-bottom:3px}
 .analyst-sub{font-size:.76rem;color:var(--muted);margin-bottom:10px}
-.analyst-tag{display:inline-block;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#a78bfa;font-size:.72rem;padding:2px 10px;border-radius:20px;margin:2px}
-/* BACK BTN / LEAGUE DETAIL */
 .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.85rem;cursor:pointer;margin-bottom:22px;padding:7px 14px;border:1px solid rgba(0,212,255,.3);border-radius:8px;transition:all .2s}
 .back-btn:hover{background:rgba(0,212,255,.08)}
 .empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
@@ -198,7 +157,6 @@ footer a{color:var(--accent);text-decoration:none}
   </ul>
 </nav>
 
-<!-- HOME PAGE -->
 <div id="page-home" class="page active">
 <div class="hero">
   <div class="hero-tag">專業運彩分析</div>
@@ -213,7 +171,6 @@ footer a{color:var(--accent);text-decoration:none}
 </div>
 <hr class="divider">
   <div class="home-main">
-  <!-- 每日推薦 + 側欄 -->
   <div class="layout">
     <div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
@@ -238,22 +195,11 @@ footer a{color:var(--accent);text-decoration:none}
         <div class="analyst-avatar">🎯</div>
         <div class="analyst-name">RS</div>
       </div>
-      <!-- <div class="sb-card">
-        <h3>聯賽分類</h3>
-        <ul class="sb-list">
-          <li><a onclick="showLeague('BCL')">🌏 BCL Asia-East <span class="sb-cnt">(2)</span></a></li>
-          <li><a onclick="showLeague('SBL')">🏀 SBL <span class="sb-cnt">(0)</span></a></li>
-          <li><a onclick="showLeague('TPBL')">🏀 TPBL <span class="sb-cnt">(0)</span></a></li>
-          <li><a onclick="showLeague('PLG')">🏀 PLG <span class="sb-cnt">(0)</span></a></li>
-          <li><a onclick="showLeague('五大聯賽')">⚽ 五大聯賽 <span class="sb-cnt">(0)</span></a></li>
-        </ul>
-      </div> -->
     </div>
   </div>
   </div>
 
       <div class="container">
-  <!-- 籃球 -->
   <div id="section-basketball" class="leagues-section">
     <div class="section-title">🏀 籃球聯賽</div>
     <div class="league-grid">
@@ -263,7 +209,6 @@ footer a{color:var(--accent);text-decoration:none}
       <div class="league-card" onclick="showLeague('BCL')"><div class="lg-icon">🌏</div><div class="lg-name">BCL Asia-East</div><div class="lg-sub">亞洲冠軍聯賽</div><span class="badge-b">國際</span></div>
     </div>
   </div>
-  <!-- 足球 -->
   <div id="section-football" class="leagues-section">
     <div class="section-title">⚽ 足球聯賽</div>
     <div class="league-grid">
@@ -291,10 +236,22 @@ footer a{color:var(--accent);text-decoration:none}
 <footer><p>© 2026 <a href="#">RS運彩分析</a> ‧ 本站內容僅供參考，博彩需量力而為，未滿18歲請勿進入。</p><p style="margin-top:10px">聯絡信箱：<a href="mailto:predictioneverygame@gmail.com">predictioneverygame@gmail.com</a></p></footer>
 
 <script>
-// ════════════════════════════════════════════
-// DATA — 每場比賽的推薦 + 結果
-// ════════════════════════════════════════════
 const MATCHES = [
+  {
+    id: 'ligue1_0419_lille_nice',
+    date: '2026-04-19',
+    league: '法甲',
+    sport: 'soccer',
+    time: '03:05',
+    status: 'preview',
+    home: { name: '利爾', short: '利爾', logo: 'lille', score: 0 },
+    away: { name: '尼斯', short: '尼斯', logo: 'nice', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '利爾近期主場火力全開，進攻端穩定性高；尼斯防守雖穩，但面對利爾的強攻恐有壓力。看好大球開出。',
+  },
   {
     id: 'Aleague_0417_G1',
     date: '2026-04-17',
@@ -491,111 +448,6 @@ const MATCHES = [
     summary: '',
   },
   {
-    id: 'bundesliga2_0418_dresden_bochum',
-    date: '2026-04-18',
-    league: '德乙',
-    sport: 'soccer',
-    time: '19:00',
-    status: 'preview',
-    home: { name: '特雷斯登', short: '特雷斯登', logo: 'dresden', score: 0 },
-    away: { name: '波琴', short: '波琴', logo: 'bochum', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'bundesliga_0418_bielefeld_nurnberg',
-    date: '2026-04-18',
-    league: '德甲',
-    sport: 'soccer',
-    time: '19:00',
-    status: 'preview',
-    home: { name: '比勒費爾德', short: '比勒費爾德', logo: 'bielefeld', score: 0 },
-    away: { name: '紐倫堡', short: '紐倫堡', logo: 'nurnberg', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'epl_0418_brentford_fulham',
-    date: '2026-04-18',
-    league: '英超',
-    sport: 'soccer',
-    time: '19:30',
-    status: 'preview',
-    home: { name: '賓福特', short: '賓福特', logo: 'brentford', score: 0 },
-    away: { name: '富咸', short: '富咸', logo: 'fulham', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'bundesliga_0418_hoffenheim_dortmund',
-    date: '2026-04-18',
-    league: '德甲',
-    sport: 'soccer',
-    time: '21:30',
-    status: 'preview',
-    home: { name: '賀芬咸', short: '賀芬咸', logo: 'hoffenheim', score: 0 },
-    away: { name: '多蒙特', short: '多蒙特', logo: 'dortmund', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'bundesliga_0418_bremen_hamburg',
-    date: '2026-04-18',
-    league: '德甲',
-    sport: 'soccer',
-    time: '21:30',
-    status: 'preview',
-    home: { name: '雲達不萊梅', short: '雲達不萊梅', logo: 'bremen', score: 0 },
-    away: { name: '漢堡', short: '漢堡', logo: 'hamburg', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'bundesliga_0418_leverkusen_augsburg',
-    date: '2026-04-18',
-    league: '德甲',
-    sport: 'soccer',
-    time: '21:30',
-    status: 'preview',
-    home: { name: '利華古遜', short: '利華古遜', logo: 'leverkusen', score: 0 },
-    away: { name: '奧格斯堡', short: '奧格斯堡', logo: 'augsburg', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'epl_0418_newcastle_bournemouth',
-    date: '2026-04-18',
-    league: '英超',
-    sport: 'soccer',
-    time: '22:00',
-    status: 'preview',
-    home: { name: '紐卡素', short: '紐卡素', logo: 'newcastle', score: 0 },
-    away: { name: '般尼茅夫', short: '般尼茅夫', logo: 'bournemouth', score: 0 },
-    prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
     id: 'sbl_0416_yulon_beer',
     date: '2026-04-16',
     league: 'SBL',
@@ -606,21 +458,6 @@ const MATCHES = [
     away: { name: '台灣啤酒', short: '台啤', logo: 'beer', score: 78 },
     prediction: {
       winner: { label:'盤口預測', value:'台灣啤酒+6.5', result:'hit' },
-    },
-    mvps: [],
-    summary: '',
-  },
-  {
-    id: 'sbl_0416_bank_keelung',
-    date: '2026-04-16',
-    league: 'SBL',
-    sport: 'basketball',
-    time: '19:00',
-    status: 'final',
-    home: { name: '台灣銀行', short: '台銀', logo: 'taiwanbank', score: 71 },
-    away: { name: '基隆黑鳶', short: '黑鳶', logo: 'blackkites', score: 67 },
-    prediction: {
-      winner: { label:'盤口預測', value:'台灣銀行-1.5', result:'hit' },
     },
     mvps: [],
     summary: '',
@@ -638,65 +475,10 @@ const MATCHES = [
       winner: { label:'盤口預測', value:'基隆黑鳶+6.5', result:'miss' },
     },
     mvps: [],
-    summary: '看好<strong>基隆黑鳶盤口</strong>，主場優勢明顯，近期狀態穩定，防守端表現出色，值得支持。',
-  },
-  {
-    id: 'sbl_0415_yulon_taishin',
-    date: '2026-04-15',
-    league: 'SBL',
-    sport: 'basketball',
-    time: '21:00',
-    status: 'final',
-    home: { name: '裕隆納智捷', short: '裕隆', logo: 'yulon', score: 62 },
-    away: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: 69 },
-    prediction: {
-      winner: { label:'盤口預測', value:'裕隆納智捷-6.5', result:'miss' },
-    },
-    mvps: [],
-    summary: '看好<strong>裕隆納智捷盤口</strong>，整體陣容深度勝出，控衛組織穩健，進攻節奏掌控能力強。',
-  },
-  {
-    id: 'bcl_0414_pilots_SCA',
-    date: '2026-04-16',
-    league: 'BCL',
-    sport: 'basketball',
-    time: '19:00',
-    status: 'final', // 'preview' | 'live' | 'final'
-    home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 99 },
-    away: { name: '香港南華', short: '南華', logo: 'sca', score: 80 },
-    prediction: {
-      winner: { label:'讓分盤', value:'領航猿 -14.5', result:'hit' },
-    },
-    mvps: [],
-    summary: '南華今日沒上Dominic Gilbert，勢必在攻守兩端有重大影響，因此看好領航猿。',
-  },
-  {
-    id: 'bcl_0414_pilots_kings',
-    date: '2026-04-14',
-    league: 'BCL',
-    sport: 'basketball',
-    time: '19:00',
-    status: 'final', // 'preview' | 'live' | 'final'
-    home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 110 },
-    away: { name: '新北國王', short: '國王', logo: 'kings', score: 85 },
-    prediction: {
-      winner: { label:'讓分盤', value:'領航猿 -8.5', result:'hit' }
-    },
-    mvps: [
-      { name:'米爾納', stats:'31分 5籃板 3助攻', icon:'🔥' },
-      { name:'伯朗',   stats:'21分 13籃板',       icon:'💪' },
-    ],
-    summary: '領航猿在第二節打出<strong>38:11的毀滅性攻勢</strong>，直接讓比賽失去懸念。' +
-             '洋將米爾納全場狂飆31分，搭配伯朗21分13籃板的大號雙雙，' +
-             '全員輪番上陣均有得分貢獻，展現完整的團隊球風。' +
-             '國王因陣容深度不足，在第二節體力與防守明顯崩盤。' +
-             '領航猿豪取BCL Asia-East<strong>2連勝</strong>，順利晉級4強。',
+    summary: '看好基隆黑鳶主場優勢明顯，近期狀態穩定。',
   }
 ];
 
-// ════════════════════════════════════════════
-// TEAM LOGOS
-// ════════════════════════════════════════════
 const TEAM_LOGOS = {
   'pilots': 'https://upload.wikimedia.org/wikipedia/zh/c/c6/%E6%A1%83%E5%9C%92%E7%92%9E%E5%9C%92%E9%A0%98%E8%88%AA%E7%8C%BF.svg',
   'kings': 'https://upload.wikimedia.org/wikipedia/zh/f/ff/%E6%96%B0%E5%8C%97%E5%9C%8B%E7%8E%8B.png',
@@ -715,25 +497,16 @@ const TEAM_LOGOS = {
   'wellington_phoenix': 'https://upload.wikimedia.org/wikipedia/en/5/53/Wellington_Phoenix_FC_logo.svg',
   'western_sydney': 'https://upload.wikimedia.org/wikipedia/en/7/7c/Western_Sydney_Wanderers_FC_logo.png'
 };
-const TEAM_LOGO_FALLBACK = {
-  'blackkites': '🦅'
-};
+
 function getTeamLogo(code, sport) {
   const url = TEAM_LOGOS[code];
   const fallbackEmoji = sport === 'basketball' ? '🏀' : '⚽';
-
   if (url) {
-    return `<img src="${url}" class="team-logo-img"
-      onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<div>${fallbackEmoji}</div>')"
-    >`;
+    return `<img src="${url}" class="team-logo-img" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<div>${fallbackEmoji}</div>')">`;
   }
-
-  return TEAM_LOGO_FALLBACK[code] || fallbackEmoji;
+  return fallbackEmoji;
 }
 
-// ════════════════════════════════════════════
-// RENDER HELPERS
-// ════════════════════════════════════════════
 function renderMatchCard(m) {
   const isHome = m.home.score > m.away.score;
   const isDraw = m.home.score === m.away.score;
@@ -752,19 +525,12 @@ function renderMatchCard(m) {
     </div>
   `).join('');
 
-  const mvpHTML = m.mvps.map(mv => `
-    <div class="mvp-card">
-      <div class="mvp-icon">${mv.icon}</div>
-      <div><div class="mvp-name">${mv.name}</div><div class="mvp-stat">${mv.stats}</div></div>
-    </div>
-  `).join('');
-
   return `
     <div class="match-card">
       <div class="match-header">
         <div style="display:flex;align-items:center;gap:8px">
           <span class="match-league-badge ${sportClass}">${sportLabel}</span>
-                      <span class="match-date">📅 ${m.date.slice(5).replace('-','/')}</span>
+          <span class="match-date">📅 ${m.date.slice(5).replace('-','/')}</span>
           <span class="match-time">🕖 ${m.time}</span>
         </div>
         <span class="${statusClass[m.status]}">${statusMap[m.status]}</span>
@@ -773,235 +539,108 @@ function renderMatchCard(m) {
         <div class="team-block">
           <div class="team-logo">${getTeamLogo(m.home.logo, m.sport)}</div>
           <div class="team-name">${m.home.name}</div>
-          <div class="team-short">主場</div>
           <div class="team-score ${m.status==='preview'?'score-pre':isDraw?'score-draw':isHome?'score-win':'score-lose'}">
             ${m.status==='preview'?'—':m.home.score}
           </div>
         </div>
-        <div class="vs-block">
-          <div class="vs-text">VS</div>
-        </div>
+        <div class="vs-block"><div class="vs-text">VS</div></div>
         <div class="team-block">
           <div class="team-logo">${getTeamLogo(m.away.logo, m.sport)}</div>
           <div class="team-name">${m.away.name}</div>
-          <div class="team-short">客場</div>
           <div class="team-score ${m.status==='preview'?'score-pre':isDraw?'score-draw':!isHome?'score-win':'score-lose'}">
             ${m.status==='preview'?'—':m.away.score}
           </div>
         </div>
       </div>
-      ${m.prediction ? `<div class="prediction-box">
+      <div class="prediction-box">
         <div class="pred-title">🎯 本場推薦預測</div>
         <div class="pred-items">${predHTML}</div>
-      </div>` : ''}
-      ${m.mvps && m.status==='final' ? `<div class="mvp-row">${mvpHTML}</div>` : ''}
+      </div>
       ${m.summary ? `<div class="analysis-box"><p>${m.summary}</p></div>` : ''}
     </div>
   `;
 }
 
-// ════════════════════════════════════════════
-// PREDICTION STATS（依聯賽：命中 / 未中；淨值 = 命中 − 未中）
-// ════════════════════════════════════════════
-const LEAGUE_STATS_LABEL = {
-  BCL: '🌏 BCL',
-  SBL: '🏀 SBL',
-  TPBL: '🏀 TPBL',
-  PLG: '🏀 PLG',
-  英超: '⚽ 英超',
-  西甲: '⚽ 西甲',
-  德甲: '⚽ 德甲',
-  法甲: '⚽ 法甲',
-  德乙: '⚽ 德乙',
-  澳甲: '⚽ 澳甲',
-  美足: '⚽ MLS',
-  荷蘭甲: '⚽ 荷甲',
-};
+const LEAGUE_STATS_LABEL = { BCL: '🌏 BCL', SBL: '🏀 SBL', TPBL: '🏀 TPBL', PLG: '🏀 PLG', 英超: '⚽ 英超', 西甲: '⚽ 西甲', 德甲: '⚽ 德甲', 法甲: '⚽ 法甲', 德乙: '⚽ 德乙', 澳甲: '⚽ 澳甲', 美足: '⚽ MLS', 荷蘭甲: '⚽ 荷甲' };
+const PRED_STATS_LEAGUE_ORDER = ['SBL', 'TPBL', 'PLG', 'BCL', '英超', '西甲', '德甲', '法甲', '德乙', '澳甲', '美足', '荷蘭甲'];
 
-/** 預測戰績側欄：固定列出與首頁聯賽區相同之聯賽（無結算則 0） */
-const PRED_STATS_LEAGUE_ORDER = [
-  'SBL', 'TPBL', 'PLG', 'BCL',
-  '英超', '西甲', '德甲', '法甲', '德乙', '澳甲', '美足', '荷蘭甲',
-];
-
-function tallyPredictionsByLeague(matches) {
+function renderPredictionStats() {
   const byLeague = {};
-  let totalHit = 0;
-  let totalMiss = 0;
-
-  matches.forEach((m) => {
+  let tHit = 0, tMiss = 0;
+  MATCHES.forEach(m => {
     if (m.status !== 'final' || !m.prediction) return;
-    const lg = m.league;
-    if (!byLeague[lg]) byLeague[lg] = { hit: 0, miss: 0 };
-
-    Object.values(m.prediction).forEach((p) => {
-      if (p.result === 'hit') {
-        byLeague[lg].hit += 1;
-        totalHit += 1;
-      } else if (p.result === 'miss') {
-        byLeague[lg].miss += 1;
-        totalMiss += 1;
-      }
+    if (!byLeague[m.league]) byLeague[m.league] = { hit: 0, miss: 0 };
+    Object.values(m.prediction).forEach(p => {
+      if (p.result === 'hit') { byLeague[m.league].hit++; tHit++; }
+      else if (p.result === 'miss') { byLeague[m.league].miss++; tMiss++; }
     });
   });
 
-  return { byLeague, totalHit, totalMiss };
-}
-
-function formatNet(hit, miss) {
-  const n = hit - miss;
-  if (n > 0) return '+' + n;
-  return String(n);
-}
-
-function netClass(hit, miss) {
-  const n = hit - miss;
-  if (n > 0) return 'pos';
-  if (n < 0) return 'neg';
-  return 'zero';
-}
-
-function renderPredictionStats() {
-  const { byLeague, totalHit, totalMiss } = tallyPredictionsByLeague(MATCHES);
   const rowsEl = document.getElementById('pred-stats-rows');
-  const totalEl = document.getElementById('pred-stats-total');
-
-  rowsEl.innerHTML = PRED_STATS_LEAGUE_ORDER.map(function (lg) {
+  rowsEl.innerHTML = PRED_STATS_LEAGUE_ORDER.map(lg => {
     const rec = byLeague[lg] || { hit: 0, miss: 0 };
-    const hit = rec.hit;
-    const miss = rec.miss;
-    const label = LEAGUE_STATS_LABEL[lg] || lg;
-    const net = formatNet(hit, miss);
-    const nc = netClass(hit, miss);
+    const net = rec.hit - rec.miss;
     return `<div class="pred-stat-row pred-stat-grid">
-      <span class="pred-stat-league pred-stat-col-league" title="${lg}">${label}</span>
-      <span class="pred-stat-col-hit ic-hit">${hit}</span>
-      <span class="pred-stat-sep">·</span>
-      <span class="pred-stat-col-miss ic-miss">${miss}</span>
-      <span class="pred-stat-net pred-stat-col-net ${nc}">${net}</span>
+      <span class="pred-stat-league pred-stat-col-league">${LEAGUE_STATS_LABEL[lg] || lg}</span>
+      <span class="pred-stat-col-hit ic-hit">${rec.hit}</span><span class="pred-stat-sep">·</span>
+      <span class="pred-stat-col-miss ic-miss">${rec.miss}</span>
+      <span class="pred-stat-net pred-stat-col-net ${net>0?'pos':net<0?'neg':'zero'}">${net>0?'+'+net:net}</span>
     </div>`;
   }).join('');
-
-  const tNet = formatNet(totalHit, totalMiss);
-  const tNc = netClass(totalHit, totalMiss);
-  totalEl.innerHTML = `
+  
+  const totalNet = tHit - tMiss;
+  document.getElementById('pred-stats-total').innerHTML = `
     <span class="lbl pred-stat-col-league">全部聯賽</span>
-    <span class="pred-stat-col-hit ic-hit">${totalHit}</span>
-    <span class="pred-stat-sep">·</span>
-    <span class="pred-stat-col-miss ic-miss">${totalMiss}</span>
-    <span class="pred-stat-net pred-stat-col-net ${tNc}">${tNet}</span>
+    <span class="pred-stat-col-hit ic-hit">${tHit}</span><span class="pred-stat-sep">·</span>
+    <span class="pred-stat-col-miss ic-miss">${tMiss}</span>
+    <span class="pred-stat-net pred-stat-col-net ${totalNet>0?'pos':totalNet<0?'neg':'zero'}">${totalNet>0?'+'+totalNet:totalNet}</span>
   `;
 }
 
-// ════════════════════════════════════════════
-// DATE LIST
-// ════════════════════════════════════════════
-function groupByDate(matches) {
-  const map = {};
-  matches.forEach(m => { if(!map[m.date]) map[m.date]=[]; map[m.date].push(m); });
-  return map;
-}
-function formatDate(d) {
-  const dt = new Date(d+'T00:00:00');
-  return { pill: (dt.getMonth()+1)+'/'+ dt.getDate(), full: dt.getFullYear()+'年'+(dt.getMonth()+1)+'月'+dt.getDate()+'日' };
-}
-
 function renderDateList() {
-  const grouped = groupByDate(MATCHES);
+  const grouped = {};
+  MATCHES.forEach(m => { if(!grouped[m.date]) grouped[m.date]=[]; grouped[m.date].push(m); });
   const dates = Object.keys(grouped).sort((a,b) => b.localeCompare(a));
   const container = document.getElementById('date-list');
-  container.innerHTML = '';
-  dates.forEach((date, idx) => {
-    const matches = grouped[date];
-    const fd = formatDate(date);
-    const bCnt = matches.filter((m) => m.sport === 'basketball').length;
-    const fCnt = matches.filter((m) => m.sport === 'soccer' || m.sport === 'football').length;
-    const row = document.createElement('div');
-    row.className = 'date-row' + (idx===0?' open':'');
-    row.innerHTML = `
+  container.innerHTML = dates.map((date, idx) => {
+    const ms = grouped[date];
+    const bCnt = ms.filter(m => m.sport === 'basketball').length;
+    const fCnt = ms.filter(m => m.sport === 'soccer').length;
+    return `<div class="date-row ${idx===0?'open':''}">
       <div class="date-header" onclick="this.parentElement.classList.toggle('open')">
-        <div class="date-left">
-          <span class="date-pill">${fd.pill}</span>
-          <div>
-            <div class="date-title">${fd.full} 賽事推薦</div>
-            <div class="date-sub">共 ${matches.length} 場分析</div>
-          </div>
+        <div class="date-left"><span class="date-pill">${date.slice(5).replace('-','/')}</span>
+          <div><div class="date-title">${date} 賽事推薦</div><div class="date-sub">共 ${ms.length} 場分析</div></div>
         </div>
         <div class="date-meta">
-          ${bCnt>0?'<span style="font-size:.76rem;color:var(--accent)">🏀 '+bCnt+'</span>':''}
-          ${fCnt>0?'<span style="font-size:.76rem;color:var(--accent3);margin-left:6px">⚽ '+fCnt+'</span>':''}
+          ${bCnt>0?'<span style="color:var(--accent)">🏀 '+bCnt+'</span>':''}
+          ${fCnt>0?'<span style="color:var(--accent3)">⚽ '+fCnt+'</span>':''}
           <span class="chevron">▼</span>
         </div>
       </div>
-      <div class="date-body">
-        ${matches.map(m => renderMatchCard(m)).join('')}
-      </div>
-    `;
-    container.appendChild(row);
-  });
+      <div class="date-body">${ms.map(m => renderMatchCard(m)).join('')}</div>
+    </div>`;
+  }).join('');
 }
 
-// ════════════════════════════════════════════
-// LEAGUE PAGE
-// ════════════════════════════════════════════
 function showLeague(league) {
   const matches = MATCHES.filter(m => m.league === league);
-  const leagueNames = {
-    'BCL':'🌏 BCL Asia-East', 'SBL':'🏀 SBL 超級籃球聯賽',
-    'TPBL':'🏀 TPBL', 'PLG':'🏀 PLG P.LEAGUE+',
-    '英超':'⚽ 英超', '西甲':'⚽ 西甲', '德甲':'⚽ 德甲', '法甲':'⚽ 法甲', '德乙':'⚽ 德乙', '澳甲':'⚽ 澳甲',
-    '美足':'⚽ 美足 MLS', '荷蘭甲':'⚽ 荷蘭甲'
-  };
-  document.getElementById('league-header').textContent = leagueNames[league] || league;
+  document.getElementById('league-header').textContent = league;
   const content = document.getElementById('league-content');
-  if (matches.length === 0) {
-    content.innerHTML = '<div class="empty-state"><div class="big">📋</div><p>此聯賽暫無分析文章，請繼續關注！</p></div>';
-  } else {
-    content.innerHTML = matches.map(m => renderMatchCard(m)).join('');
-  }
+  content.innerHTML = matches.length ? matches.map(m => renderMatchCard(m)).join('') : '<div class="empty-state">📋 暫無分析</div>';
   showPage('league');
 }
 
-// ════════════════════════════════════════════
-// PAGE NAV
-// ════════════════════════════════════════════
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(function (p) {
-    p.classList.remove('active');
-  });
-  var pageEl = document.getElementById('page-' + name);
-  if (pageEl) {
-    pageEl.classList.add('active');
-    window.scrollTo(0, 0);
-    return;
-  }
-  if (name === 'basketball' || name === 'football') {
-    var home = document.getElementById('page-home');
-    home.classList.add('active');
-    var targetId = name === 'basketball' ? 'section-basketball' : 'section-football';
-    var target = document.getElementById(targetId);
-    if (target) {
-      setTimeout(function () {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
-    } else {
-      window.scrollTo(0, 0);
-    }
-    return;
-  }
-  document.getElementById('page-home').classList.add('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
   window.scrollTo(0, 0);
-}
-
-function updateHeroRecCount() {
-  var el = document.getElementById('hero-stat-rec-count');
-  if (el) el.textContent = String(MATCHES.length);
 }
 
 // INIT
 renderDateList();
 renderPredictionStats();
-updateHeroRecCount();
+document.getElementById('hero-stat-rec-count').textContent = MATCHES.length;
 </script>
 </body>
 </html>
