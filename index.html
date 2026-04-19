@@ -55,6 +55,30 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .date-row.open .chevron{transform:rotate(180deg)}
 .date-body{display:none;padding:0 20px 20px}
 .date-row.open .date-body{display:block}
+/* 每日推薦：同日內籃球／足球分區（可各自收合） */
+.date-sport-group{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;background:rgba(0,0,0,.12)}
+.date-sport-group:last-child{margin-bottom:0}
+.date-sport-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;font-size:.84rem;font-weight:800;gap:10px;user-select:none}
+.date-sport-head:hover{filter:brightness(1.08)}
+.date-sport-group.bb .date-sport-head{background:rgba(0,212,255,.1);color:var(--accent)}
+.date-sport-group.foot .date-sport-head{background:rgba(16,185,129,.1);color:var(--accent3)}
+.date-sport-head .sport-chev{color:var(--muted);font-size:.75rem;transition:transform .25s}
+.date-sport-group.open .date-sport-head .sport-chev{transform:rotate(180deg)}
+.date-sport-body{display:none;padding:0 12px 14px}
+.date-sport-group.open .date-sport-body{display:block}
+.date-sport-body .match-card:last-child{margin-bottom:0}
+/* 每日推薦／已結算：運動下再依聯賽摺疊 */
+.nest-league-group{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;background:rgba(0,0,0,.16)}
+.nest-league-group:last-child{margin-bottom:0}
+.nest-league-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;cursor:pointer;font-size:.8rem;font-weight:800;gap:8px;user-select:none}
+.nest-league-head:hover{filter:brightness(1.06)}
+.nest-league-group.bb .nest-league-head{background:rgba(0,212,255,.07);color:var(--accent)}
+.nest-league-group.foot .nest-league-head{background:rgba(16,185,129,.07);color:var(--accent3)}
+.nest-league-chev{color:var(--muted);font-size:.72rem;transition:transform .25s}
+.nest-league-group.open .nest-league-chev{transform:rotate(180deg)}
+.nest-league-body{display:none;padding:0 8px 10px}
+.nest-league-group.open .nest-league-body{display:block}
+.nest-league-body .match-card:last-child{margin-bottom:0}
 /* MATCH CARD - Main prediction card */
 .match-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
 .match-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
@@ -88,10 +112,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-value{font-size:.95rem;font-weight:700;color:var(--text)}
 .pred-value.hit{color:var(--green)}
 .pred-value.miss{color:var(--red)}
+.pred-value.push{color:#94a3b8}
 .pred-value.pending{color:var(--gold)}
-.pred-result-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:10px;margin-left:8px}
+.pred-result-tag{display:inline-flex;align-items:center;justify-content:center;min-width:1.35em;font-size:.95rem;font-weight:800;padding:2px 6px;border-radius:10px;margin-left:8px;line-height:1}
 .tag-hit{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
 .tag-miss{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.tag-push{background:rgba(148,163,184,.12);color:#cbd5e1;border:1px solid rgba(148,163,184,.35)}
 /* MVP BOX */
 .mvp-row{display:flex;gap:10px;margin:0 18px 18px;flex-wrap:wrap}
 .mvp-card{flex:1;min-width:140px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:center}
@@ -258,9 +284,9 @@ footer a{color:var(--accent);text-decoration:none}
     <div class="section-title">🏀 籃球聯賽</div>
     <div class="league-grid">
       <div class="league-card" onclick="showLeague('SBL')"><div class="lg-icon">🏀</div><div class="lg-name">SBL</div><div class="lg-sub">超級籃球聯賽</div><span class="badge-b">台灣</span></div>
-      <div class="league-card" onclick="showLeague('TPBL')"><div class="lg-icon">🏀</div><div class="lg-name">TPBL</div><div class="lg-sub">台灣職業籃球</div><span class="badge-b">台灣</span></div>
+      <div class="league-card" onclick="showLeague('TPBL')"><div class="lg-icon">🏀</div><div class="lg-name">TPBL</div><div class="lg-sub">台灣職籃</div><span class="badge-b">台灣</span></div>
       <div class="league-card" onclick="showLeague('PLG')"><div class="lg-icon">🏀</div><div class="lg-name">PLG</div><div class="lg-sub">P. LEAGUE+</div><span class="badge-b">台灣</span></div>
-      <div class="league-card" onclick="showLeague('BCL')"><div class="lg-icon">🌏</div><div class="lg-name">BCL Asia-East</div><div class="lg-sub">亞洲冠軍聯賽</div><span class="badge-b">國際</span></div>
+      <div class="league-card" onclick="showLeague('BCL')"><div class="lg-icon">🌏</div><div class="lg-name">BCL</div><div class="lg-sub">Asia-East</div><span class="badge-b">亞洲</span></div>
     </div>
   </div>
   <!-- 足球 -->
@@ -316,11 +342,11 @@ const MATCHES = [
     league: '德乙',
     sport: 'soccer',
     time: '00:30',
-    status: 'final',
-    home: { name: '艾華斯堡', short: '艾華斯堡', logo: 'elversberg', score: 3 },
+    status: 'preview',
+    home: { name: '艾華斯堡', short: '艾華斯堡', logo: 'elversberg', score: 0 },
     away: { name: '卡斯魯厄', short: '卡斯魯厄', logo: 'karlsruhe', score: 0 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
     },
     mvps: [],
     summary: '',
@@ -335,7 +361,7 @@ const MATCHES = [
     home: { name: '威靈頓鳳凰', short: '威靈頓', logo: 'wellington_phoenix', score: 2 },
     away: { name: '西悉尼流浪者', short: '西雪梨', logo: 'western_sydney', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
     },
     mvps: [],
     summary: '',
@@ -380,7 +406,22 @@ const MATCHES = [
     home: { name: '新北中信特攻', short: '特攻', logo: 'dea', score: 107 },
     away: { name: '台啤永豐雲豹', short: '雲豹', logo: 'leopards', score: 93 },
     prediction: {
-      winner: { label:'盤口預測', value:'賽前更新', result: 'miss' },
+      winner: { label:'盤口預測', value:'雲豹PK', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'plg_0418_tainan_braves',
+    date: '2026-04-18',
+    league: 'PLG',
+    sport: 'basketball',
+    time: '17:00',
+    status: 'final',
+    home: { name: '臺南台鋼獵鷹', short: '獵鷹', logo: 'tainan_hawks', score: 94 },
+    away: { name: '臺北富邦勇士', short: '勇士', logo: 'braves', score: 100 },
+    prediction: {
+      winner: { label:'盤口預測', value:'獵鷹+2', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -391,11 +432,11 @@ const MATCHES = [
     league: '法甲',
     sport: 'soccer',
     time: '23:00',
-    status: 'preview',
-    home: { name: '羅連安特', short: '羅連安特', logo: 'lorient', score: 0 },
+    status: 'final',
+    home: { name: '羅連安特', short: '羅連安特', logo: 'lorient', score: 2 },
     away: { name: '馬賽', short: '馬賽', logo: 'marseille', score: 0 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -406,11 +447,11 @@ const MATCHES = [
     league: '英超',
     sport: 'soccer',
     time: '00:30',
-    status: 'preview',
-    home: { name: '熱刺', short: '熱刺', logo: 'tottenham', score: 0 },
-    away: { name: '白禮頓', short: '白禮頓', logo: 'brighton', score: 0 },
+    status: 'final',
+    home: { name: '熱刺', short: '熱刺', logo: 'tottenham', score: 2 },
+    away: { name: '白禮頓', short: '白禮頓', logo: 'brighton', score: 2 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -421,11 +462,11 @@ const MATCHES = [
     league: '德甲',
     sport: 'soccer',
     time: '00:30',
-    status: 'preview',
-    home: { name: '法蘭克福', short: '法蘭克福', logo: 'frankfurt', score: 0 },
-    away: { name: 'RB萊比錫', short: 'RB萊比錫', logo: 'rb_leipzig', score: 0 },
+    status: 'final',
+    home: { name: '法蘭克福', short: '法蘭克福', logo: 'frankfurt', score: 1 },
+    away: { name: 'RB萊比錫', short: 'RB萊比錫', logo: 'rb_leipzig', score: 3 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -436,11 +477,11 @@ const MATCHES = [
     league: '德乙',
     sport: 'soccer',
     time: '02:30',
-    status: 'preview',
-    home: { name: '漢諾威', short: '漢諾威', logo: 'hannover', score: 0 },
-    away: { name: '柏德博恩', short: '柏德博恩', logo: 'paderborn', score: 0 },
+    status: 'final',
+    home: { name: '漢諾威', short: '漢諾威', logo: 'hannover', score: 1 },
+    away: { name: '柏德博恩', short: '柏德博恩', logo: 'paderborn', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -450,12 +491,12 @@ const MATCHES = [
     date: '2026-04-19',
     league: '美足',
     sport: 'soccer',
-    time: '02:30',
-    status: 'preview',
-    home: { name: '蒙特利爾衝擊', short: '蒙特利爾', logo: 'montreal', score: 0 },
-    away: { name: '紐約紅牛', short: '紐約紅牛', logo: 'newyork_redbulls', score: 0 },
+    time: '02:40',
+    status: 'final',
+    home: { name: '蒙特利爾衝擊', short: '蒙特利爾', logo: 'montreal', score: 4 },
+    away: { name: '紐約紅牛', short: '紐約紅牛', logo: 'newyork_redbulls', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -466,11 +507,11 @@ const MATCHES = [
     league: '英超',
     sport: 'soccer',
     time: '03:00',
-    status: 'preview',
+    status: 'final',
     home: { name: '車路士', short: '車路士', logo: 'chelsea', score: 0 },
-    away: { name: '曼聯', short: '曼聯', logo: 'manchester_united', score: 0 },
+    away: { name: '曼聯', short: '曼聯', logo: 'manchester_united', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -481,11 +522,11 @@ const MATCHES = [
     league: 'SBL',
     sport: 'basketball',
     time: '18:00',
-    status: 'preview',
-    home: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: 0 },
-    away: { name: '臺灣銀行', short: '台銀', logo: 'taiwanbank', score: 0 },
+    status: 'final',
+    home: { name: '彰化柏力力', short: '柏力力', logo: 'powerplus', score: 63 },
+    away: { name: '臺灣銀行', short: '台銀', logo: 'taiwanbank', score: 56 },
     prediction: {
-      winner: { label:'盤口預測', value:'台銀PK', result: 'pending' },
+      winner: { label:'盤口預測', value:'台銀PK', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -496,11 +537,11 @@ const MATCHES = [
     league: '德乙',
     sport: 'soccer',
     time: '19:00',
-    status: 'preview',
-    home: { name: '特雷斯登', short: '特雷斯登', logo: 'dresden', score: 0 },
+    status: 'final',
+    home: { name: '特雷斯登', short: '特雷斯登', logo: 'dresden', score: 2 },
     away: { name: '波琴', short: '波琴', logo: 'bochum', score: 0 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -508,14 +549,14 @@ const MATCHES = [
   {
     id: 'bundesliga_0418_bielefeld_nurnberg',
     date: '2026-04-18',
-    league: '德甲',
+    league: '德乙',
     sport: 'soccer',
     time: '19:00',
-    status: 'preview',
-    home: { name: '比勒費爾德', short: '比勒費爾德', logo: 'bielefeld', score: 0 },
-    away: { name: '紐倫堡', short: '紐倫堡', logo: 'nurnberg', score: 0 },
+    status: 'final',
+    home: { name: '比勒費爾德', short: '比勒費爾德', logo: 'bielefeld', score: 1 },
+    away: { name: '紐倫堡', short: '紐倫堡', logo: 'nurnberg', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -526,11 +567,11 @@ const MATCHES = [
     league: '英超',
     sport: 'soccer',
     time: '19:30',
-    status: 'preview',
+    status: 'final',
     home: { name: '賓福特', short: '賓福特', logo: 'brentford', score: 0 },
     away: { name: '富咸', short: '富咸', logo: 'fulham', score: 0 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -541,11 +582,11 @@ const MATCHES = [
     league: '德甲',
     sport: 'soccer',
     time: '21:30',
-    status: 'preview',
-    home: { name: '賀芬咸', short: '賀芬咸', logo: 'hoffenheim', score: 0 },
-    away: { name: '多蒙特', short: '多蒙特', logo: 'dortmund', score: 0 },
+    status: 'final',
+    home: { name: '賀芬咸', short: '賀芬咸', logo: 'hoffenheim', score: 2 },
+    away: { name: '多蒙特', short: '多蒙特', logo: 'dortmund', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
     },
     mvps: [],
     summary: '',
@@ -556,11 +597,11 @@ const MATCHES = [
     league: '德甲',
     sport: 'soccer',
     time: '21:30',
-    status: 'preview',
-    home: { name: '雲達不萊梅', short: '雲達不萊梅', logo: 'bremen', score: 0 },
-    away: { name: '漢堡', short: '漢堡', logo: 'hamburg', score: 0 },
+    status: 'final',
+    home: { name: '雲達不萊梅', short: '雲達不萊梅', logo: 'bremen', score: 3 },
+    away: { name: '漢堡', short: '漢堡', logo: 'hamburg', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -571,11 +612,11 @@ const MATCHES = [
     league: '德甲',
     sport: 'soccer',
     time: '21:30',
-    status: 'preview',
-    home: { name: '利華古遜', short: '利華古遜', logo: 'leverkusen', score: 0 },
-    away: { name: '奧格斯堡', short: '奧格斯堡', logo: 'augsburg', score: 0 },
+    status: 'final',
+    home: { name: '利華古遜', short: '利華古遜', logo: 'leverkusen', score: 1 },
+    away: { name: '奧格斯堡', short: '奧格斯堡', logo: 'augsburg', score: 2 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
     },
     mvps: [],
     summary: '',
@@ -586,9 +627,294 @@ const MATCHES = [
     league: '英超',
     sport: 'soccer',
     time: '22:00',
+    status: 'final',
+    home: { name: '紐卡素', short: '紐卡素', logo: 'newcastle', score: 1 },
+    away: { name: '般尼茅夫', short: '般尼茅夫', logo: 'bournemouth', score: 2 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'ligue1_0419_lille_nice',
+    date: '2026-04-19',
+    league: '法甲',
+    sport: 'soccer',
+    time: '03:05',
+    status: 'final',
+    home: { name: '利爾', short: '利爾', logo: 'lille', score: 0 },
+    away: { name: '奈斯', short: '奈斯', logo: 'nice', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_colorado_intermiami',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '04:40',
+    status: 'final',
+    home: { name: '科羅拉多急流', short: '科羅拉多', logo: 'colorado_rapids', score: 2 },
+    away: { name: '國際邁阿密', short: '邁阿密', logo: 'inter_miami', score: 3 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_orlando_houston',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '07:40',
+    status: 'final',
+    home: { name: '奧蘭多城', short: '奧蘭多', logo: 'orlando_city', score: 0 },
+    away: { name: '侯斯頓戴拿模', short: '侯斯頓', logo: 'houston_dynamo', score: 1 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_cincinnati_chicago',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '07:40',
+    status: 'final',
+    home: { name: '辛辛那提', short: '辛辛那提', logo: 'fc_cincinnati', score: 3 },
+    away: { name: '芝加哥火燄', short: '芝加哥', logo: 'chicago_fire', score: 3 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_ne_rev_columbus',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '07:40',
+    status: 'final',
+    home: { name: '新英倫革命', short: '新英倫', logo: 'ne_revolution', score: 2 },
+    away: { name: '哥倫布機員', short: '哥倫布', logo: 'columbus_crew', score: 1 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_minnesota_portland',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '08:40',
+    status: 'final',
+    home: { name: '明尼蘇達聯', short: '明尼蘇達', logo: 'minnesota_united', score: 2 },
+    away: { name: '波特蘭伐木者', short: '波特蘭', logo: 'portland_timbers', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_dallas_galaxy',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '08:40',
+    status: 'final',
+    home: { name: 'FC達拉斯', short: '達拉斯', logo: 'fc_dallas', score: 2 },
+    away: { name: '洛杉磯銀河', short: '洛杉磯', logo: 'la_galaxy', score: 2 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0419_rsl_sandiego',
+    date: '2026-04-19',
+    league: '美足',
+    sport: 'soccer',
+    time: '09:40',
+    status: 'final',
+    home: { name: '皇家鹽湖城', short: '鹽湖城', logo: 'real_salt_lake', score: 4 },
+    away: { name: '聖地牙哥FC', short: '聖地牙哥', logo: 'san_diego_fc', score: 2 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'aleague_0419_adelaide_macarthur',
+    date: '2026-04-19',
+    league: '澳甲',
+    sport: 'soccer',
+    time: '13:30',
+    status: 'final',
+    home: { name: '阿德萊德聯', short: '阿德萊德', logo: 'adelaide_utd', score: 3 },
+    away: { name: '麥克阿瑟FC', short: '麥克阿瑟', logo: 'macarthur', score: 1 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'tpbl_0419_dreamers_lioneers',
+    date: '2026-04-19',
+    league: 'TPBL',
+    sport: 'basketball',
+    time: '14:30',
+    status: 'final',
+    home: { name: '寶島夢想家', short: '夢想家', logo: 'dreamers', score: 92 },
+    away: { name: '新竹攻城獅', short: '攻城獅', logo: 'lioneers', score: 86 },
+    prediction: {
+      winner: { label:'盤口預測', value:'新竹攻城獅+5.5', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'bundesliga2_0419_furth_darmstadt',
+    date: '2026-04-19',
+    league: '德乙',
+    sport: 'soccer',
+    time: '19:30',
+    status: 'final',
+    home: { name: '格雷特霍夫', short: '格雷特霍夫', logo: 'greuther_furth', score: 3 },
+    away: { name: '達斯泰特', short: '達斯泰特', logo: 'darmstadt', score: 2 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'ligue1_0419_monaco_auxerre',
+    date: '2026-04-19',
+    league: '法甲',
+    sport: 'soccer',
+    time: '21:00',
+    status: 'final',
+    home: { name: '摩納哥', short: '摩納哥', logo: 'monaco', score: 2 },
+    away: { name: '歐塞爾', short: '歐塞爾', logo: 'auxerre', score: 2 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'bcl_0419_kings_ulaanbaatar',
+    date: '2026-04-19',
+    league: 'BCL',
+    sport: 'basketball',
+    time: '17:00',
+    status: 'final',
+    home: { name: '新北國王', short: '國王', logo: 'kings', score: 80 },
+    away: { name: '烏蘭巴托野馬', short: '烏蘭巴托', logo: 'ulaanbaatar', score: 79 },
+    prediction: {
+      winner: { label:'盤口預測', value:'野馬-2.5', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'plg_0419_tainan_pilots',
+    date: '2026-04-19',
+    league: 'PLG',
+    sport: 'basketball',
+    time: '17:00',
+    status: 'final',
+    home: { name: '臺南台鋼獵鷹', short: '獵鷹', logo: 'tainan_hawks', score: 94 },
+    away: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 104 },
+    prediction: {
+      winner: { label:'盤口預測', value:'獵鷹+8.5', result: 'miss' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'tpbl_0419_dea_aquas',
+    date: '2026-04-19',
+    league: 'TPBL',
+    sport: 'basketball',
+    time: '17:00',
+    status: 'final',
+    home: { name: '新北中信特攻', short: '特攻', logo: 'dea', score: 115 },
+    away: { name: '高雄全家海神', short: '海神', logo: 'aquas', score: 99 },
+    prediction: {
+      winner: { label:'盤口預測', value:'特攻-10.5', result: 'hit' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'ligue1_0419_strasbourg_rennes',
+    date: '2026-04-19',
+    league: '法甲',
+    sport: 'soccer',
+    time: '23:15',
     status: 'preview',
-    home: { name: '紐卡素', short: '紐卡素', logo: 'newcastle', score: 0 },
-    away: { name: '般尼茅夫', short: '般尼茅夫', logo: 'bournemouth', score: 0 },
+    home: { name: '史特拉斯堡', short: '史特拉斯堡', logo: 'strasbourg', score: 0 },
+    away: { name: '雷恩', short: '雷恩', logo: 'rennes', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'epl_0419_mancity_arsenal',
+    date: '2026-04-19',
+    league: '英超',
+    sport: 'soccer',
+    time: '23:30',
+    status: 'preview',
+    home: { name: '曼城', short: '曼城', logo: 'man_city', score: 0 },
+    away: { name: '阿仙奴', short: '阿仙奴', logo: 'arsenal', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'bundesliga_0419_bayern_stuttgart',
+    date: '2026-04-19',
+    league: '德甲',
+    sport: 'soccer',
+    time: '23:30',
+    status: 'preview',
+    home: { name: '拜仁慕尼黑', short: '拜仁', logo: 'bayern', score: 0 },
+    away: { name: '史特加', short: '史特加', logo: 'stuttgart', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'ligue1_0420_psg_lyon',
+    date: '2026-04-20',
+    league: '法甲',
+    sport: 'soccer',
+    time: '02:45',
+    status: 'preview',
+    home: { name: '巴黎聖日門', short: '巴黎', logo: 'psg', score: 0 },
+    away: { name: '里昂', short: '里昂', logo: 'lyon', score: 0 },
     prediction: {
       winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
     },
@@ -747,7 +1073,7 @@ function renderMatchCard(m) {
       <div class="pred-label">${p.label}</div>
       <div class="pred-value ${m.status==='final'?p.result:'pending'}">
         ${p.value}
-        ${m.status==='final' ? (p.result==='hit'?'<span class="pred-result-tag tag-hit">✓ 命中</span>':'<span class="pred-result-tag tag-miss">✗ 未中</span>') : ''}
+        ${m.status==='final' ? (p.result==='hit'?'<span class="pred-result-tag tag-hit" title="命中">✓</span>':p.result==='miss'?'<span class="pred-result-tag tag-miss" title="未中">✗</span>':p.result==='push'?'<span class="pred-result-tag tag-push" title="和局">○</span>':'') : ''}
       </div>
     </div>
   `).join('');
@@ -901,23 +1227,116 @@ function groupByDate(matches) {
   matches.forEach(m => { if(!map[m.date]) map[m.date]=[]; map[m.date].push(m); });
   return map;
 }
+/** 同日由早到晚（最晚的賽事在最下面） */
+function sortMatchesByTimeAsc(matches) {
+  return matches.slice().sort(function (a, b) { return a.time.localeCompare(b.time); });
+}
+function isSoccerMatch(m) {
+  return m.sport === 'soccer' || m.sport === 'football';
+}
+/** 已結算：日期新→舊，同日時間早→晚 */
+function sortFinalMatchesChrono(matches) {
+  return matches.slice().sort(function (a, b) {
+    var dc = b.date.localeCompare(a.date);
+    if (dc !== 0) return dc;
+    return a.time.localeCompare(b.time);
+  });
+}
+const BB_LEAGUE_ORDER = ['SBL', 'TPBL', 'PLG', 'BCL'];
+const SC_LEAGUE_ORDER = ['英超', '西甲', '德甲', '法甲', '德乙', '澳甲', '美足', '荷蘭甲'];
+const LEAGUE_NEST_LABEL = {
+  SBL: '🏀 SBL', TPBL: '🏀 TPBL', PLG: '🏀 PLG', BCL: '🌏 BCL',
+  英超: '⚽ 英超', 西甲: '⚽ 西甲', 德甲: '⚽ 德甲', 法甲: '⚽ 法甲', 德乙: '⚽ 德乙', 澳甲: '⚽ 澳甲', 美足: '⚽ 美足', 荷蘭甲: '⚽ 荷蘭甲',
+};
+function sortLeagueKeys(keys, order) {
+  return keys.slice().sort(function (a, b) {
+    var ia = order.indexOf(a), ib = order.indexOf(b);
+    if (ia === -1) ia = 999;
+    if (ib === -1) ib = 999;
+    if (ia !== ib) return ia - ib;
+    return a.localeCompare(b);
+  });
+}
+/** 運動 → 各聯賽摺疊 → 場次；sortPerLeague 決定同一聯賽內場次順序 */
+function buildNestLeagueAccordions(matches, order, sportClass, sortPerLeague) {
+  var sortFn = sortPerLeague || sortFinalMatchesChrono;
+  var map = {};
+  matches.forEach(function (m) {
+    if (!map[m.league]) map[m.league] = [];
+    map[m.league].push(m);
+  });
+  var keys = sortLeagueKeys(Object.keys(map), order);
+  if (!keys.length) return '';
+  return keys.map(function (lg) {
+    var lm = sortFn(map[lg]);
+    var label = LEAGUE_NEST_LABEL[lg] || lg;
+    var cards = lm.map(function (m) { return renderMatchCard(m); }).join('');
+    return (
+      '<div class="nest-league-group ' + sportClass + '">' +
+        '<div class="nest-league-head" onclick="this.parentElement.classList.toggle(\'open\')">' +
+          '<span>' + label + ' · ' + lm.length + ' 場</span><span class="nest-league-chev">▼</span>' +
+        '</div>' +
+        '<div class="nest-league-body">' + cards + '</div>' +
+      '</div>'
+    );
+  }).join('');
+}
+/** 籃球／足球兩層 + 聯賽巢狀；每日推薦與已結算共用 */
+function buildSportGroupedNestedHtml(matches, sortPerLeague) {
+  var bb = matches.filter(function (m) { return m.sport === 'basketball'; });
+  var sc = matches.filter(isSoccerMatch);
+  if (!bb.length && !sc.length) return '';
+  var parts = [];
+  if (bb.length) {
+    parts.push(
+      '<div class="date-sport-group bb">' +
+        '<div class="date-sport-head" onclick="this.parentElement.classList.toggle(\'open\')">' +
+          '<span>🏀 籃球 · ' + bb.length + ' 場</span><span class="sport-chev">▼</span>' +
+        '</div>' +
+        '<div class="date-sport-body">' + buildNestLeagueAccordions(bb, BB_LEAGUE_ORDER, 'bb', sortPerLeague) + '</div>' +
+      '</div>'
+    );
+  }
+  if (sc.length) {
+    parts.push(
+      '<div class="date-sport-group foot">' +
+        '<div class="date-sport-head" onclick="this.parentElement.classList.toggle(\'open\')">' +
+          '<span>⚽ 足球 · ' + sc.length + ' 場</span><span class="sport-chev">▼</span>' +
+        '</div>' +
+        '<div class="date-sport-body">' + buildNestLeagueAccordions(sc, SC_LEAGUE_ORDER, 'foot', sortPerLeague) + '</div>' +
+      '</div>'
+    );
+  }
+  return parts.join('');
+}
+function buildSettledSportGroupedBodyHtml(matches) {
+  return buildSportGroupedNestedHtml(matches, sortFinalMatchesChrono);
+}
+/** 每日推薦單日區塊：與已結算相同巢狀；同日內各聯賽依開賽時間排序 */
+function buildSportGroupedBodyHtml(matches) {
+  return buildSportGroupedNestedHtml(matches, sortMatchesByTimeAsc);
+}
 function formatDate(d) {
   const dt = new Date(d+'T00:00:00');
   return { pill: (dt.getMonth()+1)+'/'+ dt.getDate(), full: dt.getFullYear()+'年'+(dt.getMonth()+1)+'月'+dt.getDate()+'日' };
 }
 
 function renderDateList() {
-  const grouped = groupByDate(MATCHES);
-  const dates = Object.keys(grouped).sort((a,b) => b.localeCompare(a));
+  const ongoing = MATCHES.filter(function (m) { return m.status !== 'final'; });
+  const finals = MATCHES.filter(function (m) { return m.status === 'final'; });
+
+  const grouped = groupByDate(ongoing);
+  const dates = Object.keys(grouped).sort(function (a, b) { return b.localeCompare(a); });
   const container = document.getElementById('date-list');
   container.innerHTML = '';
-  dates.forEach((date, idx) => {
-    const matches = grouped[date];
+
+  dates.forEach(function (date, idx) {
+    const matches = sortMatchesByTimeAsc(grouped[date]);
     const fd = formatDate(date);
-    const bCnt = matches.filter((m) => m.sport === 'basketball').length;
-    const fCnt = matches.filter((m) => m.sport === 'soccer' || m.sport === 'football').length;
+    const bCnt = matches.filter(function (m) { return m.sport === 'basketball'; }).length;
+    const fCnt = matches.filter(function (m) { return m.sport === 'soccer' || m.sport === 'football'; }).length;
     const row = document.createElement('div');
-    row.className = 'date-row' + (idx===0?' open':'');
+    row.className = 'date-row';
     row.innerHTML = `
       <div class="date-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="date-left">
@@ -928,24 +1347,71 @@ function renderDateList() {
           </div>
         </div>
         <div class="date-meta">
-          ${bCnt>0?'<span style="font-size:.76rem;color:var(--accent)">🏀 '+bCnt+'</span>':''}
-          ${fCnt>0?'<span style="font-size:.76rem;color:var(--accent3);margin-left:6px">⚽ '+fCnt+'</span>':''}
+          ${bCnt > 0 ? '<span style="font-size:.76rem;color:var(--accent)">🏀 ' + bCnt + '</span>' : ''}
+          ${fCnt > 0 ? '<span style="font-size:.76rem;color:var(--accent3);margin-left:6px">⚽ ' + fCnt + '</span>' : ''}
           <span class="chevron">▼</span>
         </div>
       </div>
       <div class="date-body">
-        ${matches.map(m => renderMatchCard(m)).join('')}
+        ${buildSportGroupedBodyHtml(matches)}
       </div>
     `;
     container.appendChild(row);
   });
+
+  if (finals.length > 0) {
+    const groupedFinals = groupByDate(finals);
+    const finalDates = Object.keys(groupedFinals).sort(function (a, b) { return b.localeCompare(a); });
+    finalDates.forEach(function (date, fIdx) {
+      const sortedDay = sortFinalMatchesChrono(groupedFinals[date]);
+      const fd = formatDate(date);
+      var bCntF = sortedDay.filter(function (m) { return m.sport === 'basketball'; }).length;
+      var fCntF = sortedDay.filter(function (m) { return m.sport === 'soccer' || m.sport === 'football'; }).length;
+      var finalRow = document.createElement('div');
+      var openFirstSettled = dates.length === 0 && fIdx === 0;
+      finalRow.className = 'date-row finals-block' + (openFirstSettled ? ' open' : '');
+      finalRow.innerHTML = `
+      <div class="date-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="date-left">
+          <span class="date-pill">${fd.pill}</span>
+          <div>
+            <div class="date-title">${fd.full} 已結算</div>
+            <div class="date-sub">共 ${sortedDay.length} 場</div>
+          </div>
+        </div>
+        <div class="date-meta">
+          ${bCntF > 0 ? '<span style="font-size:.76rem;color:var(--accent)">🏀 ' + bCntF + '</span>' : ''}
+          ${fCntF > 0 ? '<span style="font-size:.76rem;color:var(--accent3);margin-left:6px">⚽ ' + fCntF + '</span>' : ''}
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="date-body">
+        ${buildSettledSportGroupedBodyHtml(sortedDay)}
+      </div>
+    `;
+      container.appendChild(finalRow);
+    });
+  }
 }
 
 // ════════════════════════════════════════════
 // LEAGUE PAGE
 // ════════════════════════════════════════════
+function sortMatchesForLeague(league) {
+  const inLeague = MATCHES.filter(function (m) { return m.league === league; });
+  const ongoingL = inLeague.filter(function (m) { return m.status !== 'final'; });
+  const finalL = inLeague.filter(function (m) { return m.status === 'final'; });
+  return sortMatchesByTimeAsc(ongoingL).concat(
+    finalL.slice().sort(function (a, b) {
+      var dc = b.date.localeCompare(a.date);
+      if (dc !== 0) return dc;
+      return a.time.localeCompare(b.time);
+    })
+  );
+}
+
 function showLeague(league) {
-  const matches = MATCHES.filter(m => m.league === league);
+  const matches = sortMatchesForLeague(league);
   const leagueNames = {
     'BCL':'🌏 BCL Asia-East', 'SBL':'🏀 SBL 超級籃球聯賽',
     'TPBL':'🏀 TPBL', 'PLG':'🏀 PLG P.LEAGUE+',
@@ -975,11 +1441,23 @@ function showPage(name) {
     window.scrollTo(0, 0);
     return;
   }
-  if (name === 'basketball' || name === 'football') {
+  if (name === 'basketball') {
+    var homeB = document.getElementById('page-home');
+    homeB.classList.add('active');
+    var secBb = document.getElementById('section-basketball');
+    if (secBb) {
+      setTimeout(function () {
+        secBb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } else {
+      window.scrollTo(0, 0);
+    }
+    return;
+  }
+  if (name === 'football') {
     var home = document.getElementById('page-home');
     home.classList.add('active');
-    var targetId = name === 'basketball' ? 'section-basketball' : 'section-football';
-    var target = document.getElementById(targetId);
+    var target = document.getElementById('section-football');
     if (target) {
       setTimeout(function () {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
