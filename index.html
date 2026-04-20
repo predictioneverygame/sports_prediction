@@ -195,6 +195,16 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
   background:linear-gradient(180deg,rgba(0,212,255,.85),rgba(124,58,237,.75));
   background-clip:padding-box;
 }
+/* 側欄：當周總累積（預測戰績與搜尋之間） */
+.week-summary-card .week-summary-head h3{
+  font-size:.85rem;font-weight:700;color:var(--accent);text-transform:none;letter-spacing:.5px;
+  margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.week-summary-range{font-size:.72rem;color:var(--muted);line-height:1.4;margin-bottom:12px}
+.week-summary-body.pred-stat-grid{font-size:.82rem}
+.week-summary-rows{display:flex;flex-direction:column;gap:0}
+.week-summary-row{padding-top:10px;margin-top:8px;border-top:1px solid var(--border)}
+.week-summary-row:first-child{border-top:none;margin-top:0;padding-top:0}
 .pred-stat-row.pred-stat-grid{padding:8px 0;border-bottom:1px solid var(--border)}
 .pred-stat-row:last-of-type{border-bottom:none}
 .pred-stat-row .pred-stat-league{color:var(--text)}
@@ -277,6 +287,7 @@ footer a{color:var(--accent);text-decoration:none}
         <div class="pred-stat-rows" id="pred-stats-rows"></div>
         <div class="pred-stat-total pred-stat-grid" id="pred-stats-total"></div>
       </div>
+      <div class="sb-card stats-card week-summary-card" id="week-summary-card" title="統計 2026-04-14～04-20 期間已結算場次，分籃球／足球之預測"></div>
       <div class="sb-card"><input type="text" class="sb-search" placeholder="🔍 搜尋文章…"></div>
       <div class="analyst-card">
         <div class="analyst-avatar">🎯</div>
@@ -1302,6 +1313,59 @@ function renderPredictionStats() {
   `;
 }
 
+/** 當周區間內（含起訖日）已結算場次之 ✓／✗ 筆數；push 不計入欄位 */
+const WEEK_SUMMARY_FROM = '2026-04-14';
+const WEEK_SUMMARY_TO = '2026-04-20';
+
+function tallyHitsMissesInMatches(matches) {
+  var hit = 0;
+  var miss = 0;
+  matches.forEach(function (m) {
+    if (m.status !== 'final' || !m.prediction) return;
+    Object.values(m.prediction).forEach(function (p) {
+      if (p.result === 'hit') hit += 1;
+      else if (p.result === 'miss') miss += 1;
+    });
+  });
+  return { hit: hit, miss: miss };
+}
+
+function renderWeekSummary() {
+  var el = document.getElementById('week-summary-card');
+  if (!el) return;
+  var inRange = MATCHES.filter(function (m) {
+    return m.date >= WEEK_SUMMARY_FROM && m.date <= WEEK_SUMMARY_TO;
+  });
+  var bbList = inRange.filter(function (m) { return m.sport === 'basketball'; });
+  var scList = inRange.filter(function (m) { return m.sport === 'soccer' || m.sport === 'football'; });
+  var recBb = tallyHitsMissesInMatches(bbList);
+  var recSc = tallyHitsMissesInMatches(scList);
+  var netBb = formatNet(recBb.hit, recBb.miss);
+  var netSc = formatNet(recSc.hit, recSc.miss);
+  var ncBb = netClass(recBb.hit, recBb.miss);
+  var ncSc = netClass(recSc.hit, recSc.miss);
+  function rowHtml(label, rec, net, nc) {
+    return (
+      '<div class="week-summary-body pred-stat-grid week-summary-row">' +
+        '<span class="lbl pred-stat-col-league">' + label + '</span>' +
+        '<span class="pred-stat-col-hit ic-hit">' + rec.hit + '</span>' +
+        '<span class="pred-stat-sep">·</span>' +
+        '<span class="pred-stat-col-miss ic-miss">' + rec.miss + '</span>' +
+        '<span class="pred-stat-net pred-stat-col-net ' + nc + '">' + net + '</span>' +
+      '</div>'
+    );
+  }
+  el.innerHTML =
+    '<div class="week-summary-head">' +
+      '<h3>當周總累積</h3>' +
+      '<div class="week-summary-range">4/14－4/20</div>' +
+    '</div>' +
+    '<div class="week-summary-rows">' +
+      rowHtml('🏀 籃球', recBb, netBb, ncBb) +
+      rowHtml('⚽ 足球', recSc, netSc, ncSc) +
+    '</div>';
+}
+
 // ════════════════════════════════════════════
 // DATE LIST
 // ════════════════════════════════════════════
@@ -1566,6 +1630,7 @@ function updateHeroRecCount() {
 // INIT
 renderDateList();
 renderPredictionStats();
+renderWeekSummary();
 updateHeroRecCount();
 </script>
 </body>
