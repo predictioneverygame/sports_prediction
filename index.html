@@ -42,6 +42,18 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .home-main{max-width:1200px;margin:0 auto;padding:0 24px 40px;box-sizing:border-box}
 /* DATE ACCORDION */
 .date-list{display:flex;flex-direction:column;gap:12px}
+/* 每日推薦列表內：推薦／已結算 分區標題（樣式對齊 .section-title） */
+.date-list-section-title{
+  font-size:1.05rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;
+  margin:0 0 14px;padding-top:2px;flex-shrink:0;
+}
+.date-list-section-title::before{
+  content:'';display:block;width:4px;height:20px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px;flex-shrink:0;
+}
+.date-list-section-title span{line-height:1.25}
+.date-list-section-title.date-list-section-settled{
+  margin-top:26px;padding-top:22px;border-top:1px solid var(--border);
+}
 .date-row{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .date-row.open{border-color:var(--accent)}
 .date-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer}
@@ -200,6 +212,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .analyst-card{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(0,212,255,.1));border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:18px;text-align:center}
 .analyst-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 10px}
 .analyst-name{font-size:.97rem;font-weight:700;margin-bottom:3px}
+.analyst-legend{margin-top:12px;padding-top:12px;border-top:1px solid rgba(124,58,237,.28);font-size:.74rem;color:var(--muted);line-height:1.45;display:block;text-align:left;width:100%;max-width:210px;margin-left:auto;margin-right:auto}
+.analyst-legend-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.analyst-legend-sym{min-width:1.15em;text-align:center;font-weight:800;font-size:.9rem;flex-shrink:0}
+.analyst-legend-sym.sym-hit{color:var(--green)}
+.analyst-legend-sym.sym-miss{color:var(--red)}
+.analyst-legend-sym.sym-push{color:#94a3b8}
 .analyst-sub{font-size:.76rem;color:var(--muted);margin-bottom:10px}
 .analyst-tag{display:inline-block;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#a78bfa;font-size:.72rem;padding:2px 10px;border-radius:20px;margin:2px}
 /* BACK BTN / LEAGUE DETAIL */
@@ -263,6 +281,11 @@ footer a{color:var(--accent);text-decoration:none}
       <div class="analyst-card">
         <div class="analyst-avatar">🎯</div>
         <div class="analyst-name">RS</div>
+        <div class="analyst-legend" aria-label="預測結果符號說明">
+          <div class="analyst-legend-row"><span class="analyst-legend-sym sym-hit">✓</span><span>贏</span></div>
+          <div class="analyst-legend-row"><span class="analyst-legend-sym sym-miss">✗</span><span>輸</span></div>
+          <div class="analyst-legend-row"><span class="analyst-legend-sym sym-push">○</span><span>和局</span></div>
+        </div>
       </div>
       <!-- <div class="sb-card">
         <h3>聯賽分類</h3>
@@ -322,6 +345,66 @@ footer a{color:var(--accent);text-decoration:none}
 // ════════════════════════════════════════════
 const MATCHES = [
   {
+    id: 'bcl_0421_pilots_ulaanbaatar',
+    date: '2026-04-21',
+    league: 'BCL',
+    sport: 'basketball',
+    time: '19:00',
+    status: 'preview',
+    home: { name: '桃園璞園領航猿', short: '領航猿', logo: 'pilots', score: 0 },
+    away: { name: '烏蘭巴托野馬', short: '烏蘭巴托', logo: 'ulaanbaatar', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'領航猿-8.5', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'laliga_0422_girona_betis',
+    date: '2026-04-22',
+    league: '西甲',
+    sport: 'soccer',
+    time: '03:30',
+    status: 'preview',
+    home: { name: '赫羅納', short: '赫羅納', logo: 'girona', score: 0 },
+    away: { name: '貝迪斯', short: '貝迪斯', logo: 'betis', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'laliga_0423_elche_atletico',
+    date: '2026-04-23',
+    league: '西甲',
+    sport: 'soccer',
+    time: '01:00',
+    status: 'preview',
+    home: { name: '艾爾切', short: '艾爾切', logo: 'elche', score: 0 },
+    away: { name: '馬德里體育會', short: '馬體會', logo: 'atletico_madrid', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'laliga_0423_barcelona_celta',
+    date: '2026-04-23',
+    league: '西甲',
+    sport: 'soccer',
+    time: '03:30',
+    status: 'preview',
+    home: { name: '巴塞隆拿', short: '巴薩', logo: 'barcelona', score: 0 },
+    away: { name: '切爾達', short: '切爾達', logo: 'celta', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
     id: 'Aleague_0417_G1',
     date: '2026-04-17',
     league: '澳甲',
@@ -342,11 +425,11 @@ const MATCHES = [
     league: '德乙',
     sport: 'soccer',
     time: '00:30',
-    status: 'preview',
-    home: { name: '艾華斯堡', short: '艾華斯堡', logo: 'elversberg', score: 0 },
+    status: 'final',
+    home: { name: '艾華斯堡', short: '艾華斯堡', logo: 'elversberg', score: 3 },
     away: { name: '卡斯魯厄', short: '卡斯魯厄', logo: 'karlsruhe', score: 0 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'miss' },
     },
     mvps: [],
     summary: '',
@@ -867,11 +950,11 @@ const MATCHES = [
     league: '法甲',
     sport: 'soccer',
     time: '23:15',
-    status: 'preview',
+    status: 'final',
     home: { name: '史特拉斯堡', short: '史特拉斯堡', logo: 'strasbourg', score: 0 },
-    away: { name: '雷恩', short: '雷恩', logo: 'rennes', score: 0 },
+    away: { name: '雷恩', short: '雷恩', logo: 'rennes', score: 3 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
     },
     mvps: [],
     summary: '',
@@ -882,11 +965,11 @@ const MATCHES = [
     league: '英超',
     sport: 'soccer',
     time: '23:30',
-    status: 'preview',
-    home: { name: '曼城', short: '曼城', logo: 'man_city', score: 0 },
-    away: { name: '阿仙奴', short: '阿仙奴', logo: 'arsenal', score: 0 },
+    status: 'final',
+    home: { name: '曼城', short: '曼城', logo: 'man_city', score: 2 },
+    away: { name: '阿仙奴', short: '阿仙奴', logo: 'arsenal', score: 1 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -897,11 +980,11 @@ const MATCHES = [
     league: '德甲',
     sport: 'soccer',
     time: '23:30',
-    status: 'preview',
-    home: { name: '拜仁慕尼黑', short: '拜仁', logo: 'bayern', score: 0 },
-    away: { name: '史特加', short: '史特加', logo: 'stuttgart', score: 0 },
+    status: 'final',
+    home: { name: '拜仁慕尼黑', short: '拜仁', logo: 'bayern', score: 4 },
+    away: { name: '史特加', short: '史特加', logo: 'stuttgart', score: 2 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'hit' },
     },
     mvps: [],
     summary: '',
@@ -912,11 +995,11 @@ const MATCHES = [
     league: '法甲',
     sport: 'soccer',
     time: '02:45',
-    status: 'preview',
-    home: { name: '巴黎聖日門', short: '巴黎', logo: 'psg', score: 0 },
-    away: { name: '里昂', short: '里昂', logo: 'lyon', score: 0 },
+    status: 'final',
+    home: { name: '巴黎聖日門', short: '巴黎', logo: 'psg', score: 1 },
+    away: { name: '里昂', short: '里昂', logo: 'lyon', score: 2 },
     prediction: {
-      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+      winner: { label:'盤口預測', value:'全場大球', result: 'push' },
     },
     mvps: [],
     summary: '',
@@ -1362,6 +1445,10 @@ function renderDateList() {
   if (finals.length > 0) {
     const groupedFinals = groupByDate(finals);
     const finalDates = Object.keys(groupedFinals).sort(function (a, b) { return b.localeCompare(a); });
+    var headFinals = document.createElement('div');
+    headFinals.className = 'date-list-section-title' + (dates.length > 0 ? ' date-list-section-settled' : '');
+    headFinals.innerHTML = '<span>📅 已結算賽事</span>';
+    container.appendChild(headFinals);
     finalDates.forEach(function (date, fIdx) {
       const sortedDay = sortFinalMatchesChrono(groupedFinals[date]);
       const fd = formatDate(date);
