@@ -5,22 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RS運彩分析</title>
 <style>
-:root{--bg:#0a0e1a;--bg2:#0f1624;--card:#131b2e;--border:#1e2d4a;--accent:#00d4ff;--accent2:#7c3aed;--accent3:#10b981;--text:#e2e8f0;--muted:#64748b;--gold:#f59e0b;--red:#ef4444;--green:#22c55e}
+:root{
+  --bg:#ffffff;
+  --bg2:#f8fafc;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --accent:#0284c7;
+  --accent2:#7c3aed;
+  --accent3:#059669;
+  --text:#1e293b;
+  --muted:#64748b;
+  --gold:#b45309;
+  --red:#dc2626;
+  --green:#16a34a
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"Microsoft JhengHei","Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;height:64px;gap:8px}
-.nav-logo{color:var(--accent);font-size:1.2rem;font-weight:900;letter-spacing:2px;text-decoration:none;margin-right:auto;cursor:pointer}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;height:64px;gap:8px}
+.nav-logo{color:var(--accent);font-size:1.32rem;font-weight:900;letter-spacing:2px;text-decoration:none;margin-right:auto;cursor:pointer}
 .nav-logo span{color:var(--text)}
 .nav-links{display:flex;list-style:none;gap:4px}
-.nav-links a{color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:6px;font-size:.88rem;transition:all .2s;cursor:pointer}
+.nav-links a{color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:6px;font-size:.96rem;transition:all .2s;cursor:pointer}
 .nav-links a:hover{color:var(--accent);background:rgba(0,212,255,.08)}
-.hero{position:relative;overflow:hidden;padding:60px 32px 44px;background:linear-gradient(135deg,#0a0e1a 0%,#0d1528 50%,#0a0e1a 100%);text-align:center}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,212,255,.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(124,58,237,.1) 0%,transparent 60%)}
+.hero{position:relative;overflow:hidden;padding:44px 28px 30px;background-image:url('assets/hero-background-rs-light.png');background-size:cover;background-position:center;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(2,132,199,.08) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(124,58,237,.06) 0%,transparent 60%)}
 .hero-tag{display:inline-block;position:relative;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--accent);padding:4px 14px;border-radius:20px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
-.hero h1{position:relative;font-size:2.6rem;font-weight:900;background:linear-gradient(135deg,#fff 30%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;line-height:1.2}
-.hero p{position:relative;color:var(--muted);font-size:.95rem;max-width:520px;margin:0 auto 24px}
-.hero-stats{position:relative;display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
-.stat .num{font-size:1.7rem;font-weight:800;color:var(--accent)}
+.hero h1{position:relative;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#0f172a 30%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;line-height:1.2}
+.hero p{position:relative;color:var(--muted);font-size:.9rem;max-width:520px;margin:0 auto 18px}
+.hero-stats{position:relative;display:flex;justify-content:center;gap:26px;flex-wrap:wrap}
+.stat .num{font-size:1.45rem;font-weight:800;color:var(--accent)}
 .stat .lbl{font-size:.76rem;color:var(--muted);margin-top:2px}
 .container{max-width:1200px;margin:0 auto;padding:40px 24px}
 .section-title{font-size:1.25rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;margin-bottom:20px}
@@ -154,8 +167,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .sb-list li a{color:var(--muted);text-decoration:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .sb-list li a:hover{color:var(--accent)}
 .sb-cnt{color:var(--accent);font-size:.76rem}
-/* 預測戰績：標題列與資料列共用欄寬，✓／✗ 對齊下方數字 */
-.pred-stat-grid{display:grid;grid-template-columns:minmax(0,1fr) 34px 12px 34px 42px;align-items:center;column-gap:0;font-size:.8rem}
+/* 預測戰績：標題列與資料列共用欄寬；勿用 transform 微調（易與捲軸區寬度不一致） */
+.pred-stat-grid{display:grid;grid-template-columns:minmax(0,1fr) 38px 12px 38px 46px;align-items:center;column-gap:0;font-size:.8rem}
 .stats-card-head.pred-stat-grid{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .stats-card-head h3{margin:0;padding:0;border-bottom:none;margin-bottom:0}
 .stats-card-head .pred-stat-col-hit,
@@ -164,7 +177,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
   align-items:center;
   justify-content:center;
   line-height:1;
-  transform:translateX(-20px);
 }
 .pred-stat-col-league{min-width:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pred-stat-col-hit,.pred-stat-col-miss{text-align:center;font-weight:800;font-size:.82rem}
@@ -174,51 +186,123 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .pred-stat-legend-ic{font-size:.9rem;position:relative;top:-1px}
 .pred-stat-col-net{text-align:right}
 .stats-card .pred-stat-rows{
-  display:flex;flex-direction:column;gap:0;margin-bottom:12px;max-height:340px;overflow-y:auto;
-  padding-right:10px; /* 預留捲軸空間，避免蓋到文字 */
+  display:flex;flex-direction:column;gap:0;margin-bottom:0;
+}
+/* 預測戰績：標題／總列固定，僅聯賽列表可捲；右側預留與捲軸同寬，與列表 grid 對齊 */
+#pred-stats-card .pred-stat-scroll-wrap{
+  display:flex;
+  flex-direction:column;
+  max-height:420px;
+  min-height:0;
+  overflow:hidden;
+}
+#pred-stats-card .pred-stat-scroll-wrap > .stats-card-head.pred-stat-grid,
+#pred-stats-card .pred-stat-scroll-wrap > .pred-stat-total.pred-stat-grid{
+  flex-shrink:0;
+  background:var(--card);
+  box-sizing:border-box;
+  /* 與下方列表捲軸寬度一致（見 .pred-stat-rows::-webkit-scrollbar width） */
+  padding-inline-end:10px;
+}
+#pred-stats-card .pred-stat-rows{
+  flex:1 1 auto;
+  min-height:0;
+  max-height:none;
+  overflow-y:scroll;
+  overflow-x:hidden;
   scrollbar-width:thin;
   scrollbar-color:rgba(143,155,179,.55) transparent;
-  scrollbar-gutter:stable;
 }
-.stats-card .pred-stat-rows::-webkit-scrollbar{width:8px}
-.stats-card .pred-stat-rows::-webkit-scrollbar-track{
+#pred-stats-card .pred-stat-rows::-webkit-scrollbar{width:8px}
+#pred-stats-card .pred-stat-rows::-webkit-scrollbar-track{
   background:transparent;
   margin:6px 0;
 }
-.stats-card .pred-stat-rows::-webkit-scrollbar-thumb{
+#pred-stats-card .pred-stat-rows::-webkit-scrollbar-thumb{
   background:linear-gradient(180deg,rgba(143,155,179,.75),rgba(143,155,179,.45));
   border-radius:999px;
   border:2px solid transparent;
   background-clip:padding-box;
 }
-.stats-card .pred-stat-rows::-webkit-scrollbar-thumb:hover{
+#pred-stats-card .pred-stat-rows::-webkit-scrollbar-thumb:hover{
   background:linear-gradient(180deg,rgba(0,212,255,.85),rgba(124,58,237,.75));
   background-clip:padding-box;
 }
+/* 預測戰績主卡片（#pred-stats-card）：與截圖一致之標題、列線、數字對齊、淨值顏色 */
+#pred-stats-card .stats-card-head h3{
+  text-transform:none;
+  letter-spacing:.5px;
+  margin-bottom:0;
+  padding-bottom:0;
+  border-bottom:none;
+  color:var(--accent);
+}
+#pred-stats-card .pred-stat-row.pred-stat-grid{
+  padding:8px 0;
+  border-bottom:1px solid var(--border);
+}
+#pred-stats-card .pred-stat-row:last-child{border-bottom:none}
+#pred-stats-card .pred-stat-row .pred-stat-col-hit,
+#pred-stats-card .pred-stat-row .pred-stat-col-miss,
+#pred-stats-card .pred-stat-total .pred-stat-col-hit,
+#pred-stats-card .pred-stat-total .pred-stat-col-miss{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+}
+#pred-stats-card .pred-stat-total.pred-stat-grid{
+  margin-top:4px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:.82rem;
+}
+#pred-stats-card .pred-stat-total .lbl{color:var(--accent);font-weight:800;letter-spacing:.5px}
+#pred-stats-card .pred-stat-net{font-weight:800;font-size:.82rem}
+#pred-stats-card .pred-stat-net.pos{color:var(--green)}
+#pred-stats-card .pred-stat-net.neg{color:var(--red)}
+#pred-stats-card .pred-stat-net.zero{color:var(--muted)}
 /* 側欄：當周總累積（預測戰績與搜尋之間） */
+.week-summary-card{margin-top:18px}
+.week-summary-card .week-summary-item{
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  margin-bottom:12px;
+}
+.week-summary-card .week-summary-item:last-child{margin-bottom:0}
+.week-summary-card .week-summary-item.open{border-color:var(--accent)}
+.week-summary-card .week-summary-head{
+  display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
+  cursor:pointer;user-select:none;
+}
+.week-summary-card .week-summary-head:hover{background:rgba(0,212,255,.04)}
 .week-summary-card .week-summary-head h3{
   font-size:.85rem;font-weight:700;color:var(--accent);text-transform:none;letter-spacing:.5px;
-  margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid var(--border);
+  margin:0;padding:0;border-bottom:none;margin-bottom:0;
 }
-.week-summary-range{font-size:.72rem;color:var(--muted);line-height:1.4;margin-bottom:12px}
-.week-summary-body.pred-stat-grid{font-size:.82rem}
-.week-summary-rows{display:flex;flex-direction:column;gap:0}
-.week-summary-row{padding-top:10px;margin-top:8px;border-top:1px solid var(--border)}
-.week-summary-row:first-child{border-top:none;margin-top:0;padding-top:0}
-.pred-stat-row.pred-stat-grid{padding:8px 0;border-bottom:1px solid var(--border)}
-.pred-stat-row:last-of-type{border-bottom:none}
-.pred-stat-row .pred-stat-league{color:var(--text)}
-.pred-stat-net{font-weight:800;font-size:.82rem}
-.pred-stat-net.pos{color:var(--green)}
-.pred-stat-net.neg{color:var(--red)}
-.pred-stat-net.zero{color:var(--muted)}
-.pred-stat-total.pred-stat-grid{margin-top:4px;padding-top:12px;border-top:1px solid var(--border);font-size:.82rem}
-.pred-stat-total .lbl{font-weight:800;color:var(--accent);letter-spacing:.5px}
-.pred-stat-total .pred-stat-col-hit,
-.pred-stat-total .pred-stat-col-miss,
-.pred-stat-total .pred-stat-col-net{
-  transform:translateX(-20px);
+.week-summary-card .week-summary-item .week-summary-head h3.week-summary-head-title{
+  display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;flex:1;min-width:0;margin-right:8px;
 }
+.week-summary-card .week-summary-head .week-summary-dates{white-space:nowrap}
+.week-summary-card .week-summary-head .week-summary-sep-dot{opacity:.45;color:var(--muted);font-weight:400}
+.week-summary-card .week-summary-head .week-summary-total-net{font-weight:800;font-size:.8rem;letter-spacing:.2px;white-space:nowrap}
+.week-summary-card .week-summary-head .week-summary-total-net.pos{color:var(--green)}
+.week-summary-card .week-summary-head .week-summary-total-net.neg{color:var(--red)}
+.week-summary-card .week-summary-head .week-summary-total-net.zero{color:var(--muted)}
+.week-summary-card .week-summary-head .chevron{color:var(--muted);font-size:.9rem;transition:transform .3s}
+.week-summary-card .week-summary-item.open .week-summary-head .chevron{transform:rotate(180deg)}
+.week-summary-card .week-summary-body{display:none;padding:0 18px 18px}
+.week-summary-card .week-summary-item.open .week-summary-body{display:block}
+.week-summary-card .week-summary-range{font-size:.72rem;color:var(--muted);line-height:1.4;margin-bottom:12px}
+.week-summary-card .week-summary-rows{display:flex;flex-direction:column;gap:0}
+.week-summary-card .pred-stat-row.pred-stat-grid{padding:8px 0;border-bottom:1px solid var(--border)}
+.week-summary-card .pred-stat-row:last-of-type{border-bottom:none}
+.week-summary-card .pred-stat-row .pred-stat-league{color:var(--text)}
+.week-summary-card .pred-stat-net{font-weight:800;font-size:.82rem}
+.week-summary-card .pred-stat-net.pos{color:var(--green)}
+.week-summary-card .pred-stat-net.neg{color:var(--red)}
+.week-summary-card .pred-stat-net.zero{color:var(--muted)}
+.week-summary-card .pred-stat-total.pred-stat-grid{margin-top:4px;padding-top:12px;border-top:1px solid var(--border);font-size:.82rem}
+.week-summary-card .pred-stat-total .lbl{font-weight:800;color:var(--accent);letter-spacing:.5px}
 .analyst-card{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(0,212,255,.1));border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:18px;text-align:center}
 .analyst-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 10px}
 .analyst-name{font-size:.97rem;font-weight:700;margin-bottom:3px}
@@ -230,6 +314,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 .analyst-legend-sym.sym-push{color:#94a3b8}
 .analyst-sub{font-size:.76rem;color:var(--muted);margin-bottom:10px}
 .analyst-tag{display:inline-block;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#a78bfa;font-size:.72rem;padding:2px 10px;border-radius:20px;margin:2px}
+/* ABOUT PAGE */
+.about-wrap{max-width:900px;margin:0 auto}
+.about-hero{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 24px;margin-bottom:18px}
+.about-title{font-size:1.55rem;font-weight:900;color:var(--text);margin-bottom:8px}
+.about-sub{font-size:.92rem;color:var(--muted);line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.about-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.about-box h4{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+.about-box p{font-size:.86rem;color:var(--muted);line-height:1.7}
 /* BACK BTN / LEAGUE DETAIL */
 .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.85rem;cursor:pointer;margin-bottom:22px;padding:7px 14px;border:1px solid rgba(0,212,255,.3);border-radius:8px;transition:all .2s}
 .back-btn:hover{background:rgba(0,212,255,.08)}
@@ -238,7 +331,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-fi
 footer{background:var(--bg2);border-top:1px solid var(--border);text-align:center;padding:24px;color:var(--muted);font-size:.8rem;margin-top:40px}
 footer a{color:var(--accent);text-decoration:none}
 .nav-links a.nav-mail{font-size:.76rem;word-break:break-all;line-height:1.25;max-width:min(240px,28vw)}
-@media(max-width:900px){.layout{grid-template-columns:1fr}.hero h1{font-size:2rem}.hero-stats{gap:20px}nav{padding:0 14px}.nav-links{display:none}.pred-items{grid-template-columns:1fr}.mvp-row{flex-direction:column}.home-main{padding-left:14px;padding-right:14px}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.hero h1{font-size:2rem}.hero-stats{gap:20px}nav{padding:0 14px}.nav-links{display:none}.pred-items{grid-template-columns:1fr}.mvp-row{flex-direction:column}.home-main{padding-left:14px;padding-right:14px}.about-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -246,6 +339,10 @@ footer a{color:var(--accent);text-decoration:none}
   <a class="nav-logo" onclick="showPage('home')">⚡ <span>RS運彩分析</span></a>
   <ul class="nav-links">
     <li><a onclick="showPage('home')">首頁</a></li>
+    <li><a onclick="showPage('about')">關於RS運彩</a></li>
+    <li><a href="#" title="推薦頁面待補">每日推薦</a></li>
+    <li><a href="#" title="教學頁面待補">運彩分析教學</a></li>
+    <li><a href="#" title="觀點頁面待補">運彩觀點分享</a></li>
     <li><a onclick="showPage('basketball')">籃球</a></li>
     <li><a onclick="showPage('football')">足球</a></li>
     <li><a class="nav-mail" href="mailto:predictioneverygame@gmail.com" title="寄信給本站">predictioneverygame@gmail.com</a></li>
@@ -256,8 +353,8 @@ footer a{color:var(--accent);text-decoration:none}
 <div id="page-home" class="page active">
 <div class="hero">
   <div class="hero-tag">專業運彩分析</div>
-  <h1>數據驅動 精準預測</h1>
-  <p>結合數據分析與多年研究，提供籃球、足球各大聯賽深度解析</p>
+  <h1>每日賽事重點整理</h1>
+  <p>結合數據分析與多年研究，提供籃球、足球各大聯賽賽事預測推薦</p>
   <div class="hero-stats">
     <div class="stat"><div class="num" id="hero-stat-rec-count">0</div><div class="lbl">推薦</div></div>
     <div class="stat"><div class="num">8</div><div class="lbl">涵蓋聯賽</div></div>
@@ -277,17 +374,19 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
     <div class="sidebar">
       <div class="sb-card stats-card" id="pred-stats-card">
-        <div class="stats-card-head pred-stat-grid" title="有過／沒過">
-          <h3 class="pred-stat-col-league">預測戰績</h3>
-          <span class="pred-stat-col-hit ic-hit pred-stat-legend-ic">✓</span>
-          <span class="pred-stat-sep">·</span>
-          <span class="pred-stat-col-miss ic-miss pred-stat-legend-ic">✗</span>
-          <span class="pred-stat-col-net"></span>
+        <div class="pred-stat-scroll-wrap">
+          <div class="stats-card-head pred-stat-grid" title="有過／沒過">
+            <h3 class="pred-stat-col-league">預測戰績</h3>
+            <span class="pred-stat-col-hit ic-hit pred-stat-legend-ic">✓</span>
+            <span class="pred-stat-sep">·</span>
+            <span class="pred-stat-col-miss ic-miss pred-stat-legend-ic">✗</span>
+            <span class="pred-stat-col-net"></span>
+          </div>
+          <div class="pred-stat-rows" id="pred-stats-rows"></div>
+          <div class="pred-stat-total pred-stat-grid" id="pred-stats-total"></div>
         </div>
-        <div class="pred-stat-rows" id="pred-stats-rows"></div>
-        <div class="pred-stat-total pred-stat-grid" id="pred-stats-total"></div>
       </div>
-      <div class="sb-card stats-card week-summary-card" id="week-summary-card" title="統計 2026-04-14～04-20 期間已結算場次，分籃球／足球之預測"></div>
+      <div class="sb-card stats-card week-summary-card" id="week-summary-card"></div>
       <div class="sb-card"><input type="text" class="sb-search" placeholder="🔍 搜尋文章…"></div>
       <div class="analyst-card">
         <div class="analyst-avatar">🎯</div>
@@ -345,6 +444,31 @@ footer a{color:var(--accent);text-decoration:none}
   <div class="back-btn" onclick="showPage('home')">← 返回首頁</div>
   <div id="league-header" class="section-title"></div>
   <div id="league-content"></div>
+</div>
+</div>
+
+<div id="page-about" class="page">
+<div class="container">
+  <div class="back-btn" onclick="showPage('home')">← 返回首頁</div>
+  <div class="about-wrap">
+    <div class="about-hero">
+      <div class="about-title">關於 RS 運彩</div>
+      <p class="about-sub">
+        這裡主要分享籃球與足球賽事的觀察重點，內容以每日更新、實際賽果回顧與盤口紀錄為主，
+        希望提供一份簡單好讀、能快速參考的運彩資訊整理。
+      </p>
+    </div>
+    <div class="about-grid">
+      <div class="about-box">
+        <h4>📌 內容方向</h4>
+        <p>每日推薦、已結算賽事、聯賽分區瀏覽與當周戰績整理，重點放在一致的紀錄方式與清楚呈現。</p>
+      </div>
+      <div class="about-box">
+        <h4>🎯 使用方式</h4>
+        <p>可先看每日推薦，再對照已結算與預測戰績；若要找特定聯賽，直接用上方籃球／足球入口快速切換。</p>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -1111,6 +1235,141 @@ const MATCHES = [
              '全員輪番上陣均有得分貢獻，展現完整的團隊球風。' +
              '國王因陣容深度不足，在第二節體力與防守明顯崩盤。' +
              '領航猿豪取BCL Asia-East<strong>2連勝</strong>，順利晉級4強。',
+  },
+  {
+    id: 'epl_0422_brighton_chelsea',
+    date: '2026-04-22',
+    league: '英超',
+    sport: 'soccer',
+    time: '03:00',
+    status: 'preview',
+    home: { name: '白禮頓', short: '白禮頓', logo: 'brighton', score: 0 },
+    away: { name: '車路士', short: '車路士', logo: 'chelsea', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'eredivisie_0423_twente_sparta',
+    date: '2026-04-23',
+    league: '荷蘭甲',
+    sport: 'soccer',
+    time: '02:00',
+    status: 'preview',
+    home: { name: '泰斯達', short: '泰斯達', logo: 'twente', score: 0 },
+    away: { name: '鹿特丹斯巴達', short: '斯巴達', logo: 'vitesse', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'epl_0423_bournemouth_leeds',
+    date: '2026-04-23',
+    league: '英超',
+    sport: 'soccer',
+    time: '03:00',
+    status: 'preview',
+    home: { name: '般尼茅夫', short: '般尼茅夫', logo: 'bournemouth', score: 0 },
+    away: { name: '列斯聯', short: '列斯聯', logo: 'leeds', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_columbus_galaxy',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '07:30',
+    status: 'preview',
+    home: { name: '哥倫布機員', short: '哥倫布', logo: 'columbus_crew', score: 0 },
+    away: { name: '洛杉磯銀河', short: '洛杉磯', logo: 'la_galaxy', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_nycfc_cincinnati',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '07:30',
+    status: 'preview',
+    home: { name: '紐約城', short: '紐約城', logo: 'new_york_city_fc', score: 0 },
+    away: { name: '辛辛那提', short: '辛辛那提', logo: 'fc_cincinnati', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_houston_sandiego',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '08:30',
+    status: 'preview',
+    home: { name: '侯斯頓戴拿模', short: '侯斯頓', logo: 'houston_dynamo', score: 0 },
+    away: { name: '聖地牙哥FC', short: '聖地牙哥', logo: 'san_diego_fc', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_dallas_minnesota',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '08:30',
+    status: 'preview',
+    home: { name: 'FC達拉斯', short: '達拉斯', logo: 'fc_dallas', score: 0 },
+    away: { name: '明尼蘇達聯', short: '明尼蘇達', logo: 'minnesota_united', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_rsl_intermiami',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '09:30',
+    status: 'preview',
+    home: { name: '皇家鹽湖城', short: '鹽湖城', logo: 'real_salt_lake', score: 0 },
+    away: { name: '國際邁阿密', short: '邁阿密', logo: 'inter_miami', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
+  },
+  {
+    id: 'mls_0423_lafc_coloradorapids',
+    date: '2026-04-23',
+    league: '美足',
+    sport: 'soccer',
+    time: '10:30',
+    status: 'preview',
+    home: { name: '洛杉磯FC', short: '洛杉磯', logo: 'lafc', score: 0 },
+    away: { name: '科羅拉多急流', short: '科羅拉多', logo: 'colorado_rapids', score: 0 },
+    prediction: {
+      winner: { label:'盤口預測', value:'全場大球', result: 'pending' },
+    },
+    mvps: [],
+    summary: '',
   }
 ];
 
@@ -1133,7 +1392,14 @@ const TEAM_LOGOS = {
   'dea': 'https://upload.wikimedia.org/wikipedia/en/4/4d/New_Taipei_CTBC_DEA_logo.svg',
   'leopards': 'https://upload.wikimedia.org/wikipedia/zh/e/e6/%E6%A1%83%E5%9C%92%E5%8F%B0%E5%95%A4%E6%B0%B8%E8%B1%90%E9%9B%B2%E8%B1%B9.png',
   'wellington_phoenix': 'https://upload.wikimedia.org/wikipedia/en/5/53/Wellington_Phoenix_FC_logo.svg',
-  'western_sydney': 'https://upload.wikimedia.org/wikipedia/en/7/7c/Western_Sydney_Wanderers_FC_logo.png'
+  'western_sydney': 'https://upload.wikimedia.org/wikipedia/en/7/7c/Western_Sydney_Wanderers_FC_logo.png',
+  'twente': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/FC_Twente_logo.svg/300px-FC_Twente_logo.svg.png',
+  'vitesse': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/SBV_Vitesse_logo.svg/300px-SBV_Vitesse_logo.svg.png',
+  'leeds': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Leeds_United_F.C._logo.svg/300px-Leeds_United_F.C._logo.svg.png',
+  'new_york_city_fc': 'https://upload.wikimedia.org/wikipedia/en/thumb/6/60/New_York_City_FC_logo.svg/300px-New_York_City_FC_logo.svg.png',
+  'st_louis_city_sc': 'https://upload.wikimedia.org/wikipedia/en/thumb/6/60/St._Louis_City_SC_logo.svg/300px-St._Louis_City_SC_logo.svg.png',
+  'san_jose_earthquakes': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/87/San_Jose_Earthquakes_logo.svg/300px-San_Jose_Earthquakes_logo.svg.png',
+  'lafc': 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Los_Angeles_FC_logo.svg/300px-Los_Angeles_FC_logo.svg.png'
 };
 const TEAM_LOGO_FALLBACK = {
   'blackkites': '🦅'
@@ -1314,9 +1580,6 @@ function renderPredictionStats() {
 }
 
 /** 當周區間內（含起訖日）已結算場次之 ✓／✗ 筆數；push 不計入欄位 */
-const WEEK_SUMMARY_FROM = '2026-04-14';
-const WEEK_SUMMARY_TO = '2026-04-20';
-
 function tallyHitsMissesInMatches(matches) {
   var hit = 0;
   var miss = 0;
@@ -1330,40 +1593,79 @@ function tallyHitsMissesInMatches(matches) {
   return { hit: hit, miss: miss };
 }
 
+// 定義多個星期的日期範圍
+const WEEK_RANGES = [
+  { from: '2026-04-14', to: '2026-04-20' },
+  { from: '2026-04-21', to: '2026-04-28' },
+  { from: '2026-04-29', to: '2026-05-05' },
+  { from: '2026-05-06', to: '2026-05-12' },
+  { from: '2026-05-13', to: '2026-05-19' },
+];
+
 function renderWeekSummary() {
-  var el = document.getElementById('week-summary-card');
-  if (!el) return;
-  var inRange = MATCHES.filter(function (m) {
-    return m.date >= WEEK_SUMMARY_FROM && m.date <= WEEK_SUMMARY_TO;
+  var containerEl = document.getElementById('week-summary-card');
+  if (!containerEl) return;
+
+  let allWeekItemsHtml = '';
+
+  WEEK_RANGES.forEach((range, idx) => {
+    var inRange = MATCHES.filter(function (m) {
+      return m.date >= range.from && m.date <= range.to;
+    });
+    var bbList = inRange.filter(function (m) { return m.sport === 'basketball'; });
+    var scList = inRange.filter(function (m) { return m.sport === 'soccer' || m.sport === 'football'; });
+
+    var recBb = tallyHitsMissesInMatches(bbList);
+    var recSc = tallyHitsMissesInMatches(scList);
+    var recAll = tallyHitsMissesInMatches(inRange);
+    var netAll = formatNet(recAll.hit, recAll.miss);
+    var ncAll = netClass(recAll.hit, recAll.miss);
+
+    var netBb = formatNet(recBb.hit, recBb.miss);
+    var netSc = formatNet(recSc.hit, recSc.miss);
+
+    var ncBb = netClass(recBb.hit, recBb.miss);
+    var ncSc = netClass(recSc.hit, recSc.miss);
+
+    function rowHtml(label, rec, net, nc) {
+      return (
+        '<div class="pred-stat-row pred-stat-grid">' +
+          '<span class="lbl pred-stat-col-league">' + label + '</span>' +
+          '<span class="pred-stat-col-hit ic-hit">' + rec.hit + '</span>' +
+          '<span class="pred-stat-sep">·</span>' +
+          '<span class="pred-stat-col-miss ic-miss">' + rec.miss + '</span>' +
+          '<span class="pred-stat-net pred-stat-col-net ' + nc + '">' + net + '</span>' +
+        '</div>'
+      );
+    }
+
+    allWeekItemsHtml += `
+      <div class="week-summary-item">
+        <div class="week-summary-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3 class="week-summary-head-title">
+            <span class="week-summary-dates">${range.from.slice(5).replace('-','/')}－${range.to.slice(5).replace('-','/')}</span>
+            <span class="week-summary-sep-dot" aria-hidden="true">·</span>
+            <span class="week-summary-total-net ${ncAll}" title="當周已結算：✓ ${recAll.hit} / ✗ ${recAll.miss}（不含和局），淨值＝命中−未中"> ${netAll}</span>
+          </h3>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="week-summary-body">
+          <div class="week-summary-range" title="統計 ${range.from}～${range.to} 期間已結算場次，分籃球／足球之預測"></div>
+          <div class="week-summary-rows">
+            ${rowHtml('🏀 籃球', recBb, netBb, ncBb)}
+            ${rowHtml('⚽ 足球', recSc, netSc, ncSc)}
+          </div>
+        </div>
+      </div>
+    `;
   });
-  var bbList = inRange.filter(function (m) { return m.sport === 'basketball'; });
-  var scList = inRange.filter(function (m) { return m.sport === 'soccer' || m.sport === 'football'; });
-  var recBb = tallyHitsMissesInMatches(bbList);
-  var recSc = tallyHitsMissesInMatches(scList);
-  var netBb = formatNet(recBb.hit, recBb.miss);
-  var netSc = formatNet(recSc.hit, recSc.miss);
-  var ncBb = netClass(recBb.hit, recBb.miss);
-  var ncSc = netClass(recSc.hit, recSc.miss);
-  function rowHtml(label, rec, net, nc) {
-    return (
-      '<div class="week-summary-body pred-stat-grid week-summary-row">' +
-        '<span class="lbl pred-stat-col-league">' + label + '</span>' +
-        '<span class="pred-stat-col-hit ic-hit">' + rec.hit + '</span>' +
-        '<span class="pred-stat-sep">·</span>' +
-        '<span class="pred-stat-col-miss ic-miss">' + rec.miss + '</span>' +
-        '<span class="pred-stat-net pred-stat-col-net ' + nc + '">' + net + '</span>' +
-      '</div>'
-    );
-  }
-  el.innerHTML =
-    '<div class="week-summary-head">' +
-      '<h3>當周總累積</h3>' +
-      '<div class="week-summary-range">4/14－4/20</div>' +
-    '</div>' +
-    '<div class="week-summary-rows">' +
-      rowHtml('🏀 籃球', recBb, netBb, ncBb) +
-      rowHtml('⚽ 足球', recSc, netSc, ncSc) +
-    '</div>';
+
+  containerEl.innerHTML = `
+    <div class="week-summary-head">
+      <h3>當周總累積</h3>
+    </div>
+    ${allWeekItemsHtml}
+  `;
 }
 
 // ════════════════════════════════════════════
